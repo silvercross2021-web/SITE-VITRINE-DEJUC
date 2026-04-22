@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="page-header" style="background: linear-gradient(rgba(17, 34, 51, 0.85), rgba(17, 34, 51, 0.85)), url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;">
+    <div class="container text-center">
+        <h1 class="display-4 font-serif mb-2" data-aos="fade-up">Contactez-nous</h1>
+        <ul class="breadcrumb-custom" data-aos="fade-up" data-aos-delay="100">
+            {% for name, url in breadcrumb %}
+                {% if url %}
+                    <li><a href="{{ url }}">{{ name }}</a></li>
+                {% else %}
+                    <li class="active">{{ name }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <!-- Contact Info -->
+            <div class="col-lg-5 mb-5 mb-lg-0" data-aos="fade-right">
+                <span class="section-subtitle">Discutons de votre projet</span>
+                <h2 class="section-title mb-4">Nous sommes à votre écoute</h2>
+                <p class="text-muted mb-5">Prenez rendez-vous pour une consultation personnalisée avec nos experts juridiques. Nous vous accompagnons avec rigueur, discrétion et efficacité.</p>
+
+                <div class="d-flex mb-4 p-4 bg-white rounded shadow-sm hover-shadow border border-light align-items-center">
+                    <div class="feature-icon-wrapper" style="width: 50px; height: 50px; font-size: 1.2rem;">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <h4 class="h5 font-heading">Siège Principal</h4>
+                        <p class="text-muted mb-0">Abidjan, Cocody Angré<br>Lot 104, Ilot 257</p>
+                    </div>
+                </div>
+
+                <div class="d-flex mb-4 p-4 bg-white rounded shadow-sm hover-shadow border border-light align-items-center">
+                    <div class="feature-icon-wrapper" style="width: 50px; height: 50px; font-size: 1.2rem; color: var(--dejuc-orange); background-color: rgba(210, 85, 26, 0.1);">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div>
+                        <h4 class="h5 font-heading">Téléphone</h4>
+                        <p class="text-muted mb-0">
+                            <a href="tel:+2250778488405" class="text-muted">+225 07 78 48 84 05</a><br>
+                            <a href="tel:+2250716339405" class="text-muted">+225 07 16 33 94 05</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="d-flex mb-4 p-4 bg-white rounded shadow-sm hover-shadow border border-light align-items-center">
+                    <div class="feature-icon-wrapper" style="width: 50px; height: 50px; font-size: 1.2rem; color: var(--dejuc-turquoise); background-color: rgba(46, 196, 192, 0.1);">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h4 class="h5 font-heading">Email</h4>
+                        <p class="text-muted mb-0">
+                            <a href="mailto:infodejucinternational@gmail.com" class="text-muted">infodejucinternational@gmail.com</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="col-lg-7" data-aos="fade-left">
+                <div class="card border-0 shadow-lg p-md-4">
+                    <div class="card-body p-4">
+                        <h3 class="font-heading mb-4">Envoyez-nous un message</h3>
+                        <form method="post" id="main-contact-form">
+                            {% csrf_token %}
+                            
+                            {% if form.non_field_errors %}
+                                <div class="alert alert-danger">
+                                    {{ form.non_field_errors }}
+                                </div>
+                            {% endif %}
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.first_name.id_for_label }}" class="form-label text-dark fw-bold small">{{ form.first_name.label }}</label>
+                                    {{ form.first_name }}
+                                    {% if form.first_name.errors %}
+                                        <div class="text-danger small mt-1">{{ form.first_name.errors }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.last_name.id_for_label }}" class="form-label text-dark fw-bold small">{{ form.last_name.label }}</label>
+                                    {{ form.last_name }}
+                                    {% if form.last_name.errors %}
+                                        <div class="text-danger small mt-1">{{ form.last_name.errors }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.email.id_for_label }}" class="form-label text-dark fw-bold small">{{ form.email.label }}</label>
+                                    {{ form.email }}
+                                    {% if form.email.errors %}
+                                        <div class="text-danger small mt-1">{{ form.email.errors }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.phone.id_for_label }}" class="form-label text-dark fw-bold small">{{ form.phone.label }}</label>
+                                    {{ form.phone }}
+                                    {% if form.phone.errors %}
+                                        <div class="text-danger small mt-1">{{ form.phone.errors }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="{{ form.service.id_for_label }}" class="form-label text-dark fw-bold small">{{ form.service.label }}</label>
+                                {{ form.service }}
+                                {% if form.service.errors %}
+                                    <div class="text-danger small mt-1">{{ form.service.errors }}</div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="{{ form.message.id_for_label }}" class="form-label text-dark fw-bold small">{{ form.message.label }}</label>
+                                {{ form.message }}
+                                {% if form.message.errors %}
+                                    <div class="text-danger small mt-1">{{ form.message.errors }}</div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="form-check mb-4">
+                                {{ form.gdpr_consent }}
+                                <label class="form-check-label text-muted small ms-2" for="{{ form.gdpr_consent.id_for_label }}">
+                                    {{ form.gdpr_consent.label }}
+                                </label>
+                                {% if form.gdpr_consent.errors %}
+                                    <div class="text-danger small mt-1">{{ form.gdpr_consent.errors }}</div>
+                                {% endif %}
+                            </div>
+                            
+                            <button type="submit" class="btn-dejuc btn-primary w-100" id="submit-btn">
+                                <span id="btn-text">Envoyer le message</span>
+                                <span id="btn-spinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Map Section -->
+<section class="section pt-0">
+    <div class="container">
+        <div class="row" data-aos="fade-up">
+            <div class="col-12">
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15888.75661448842!2d-3.992225!3d5.385208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNcKwMjMnMDYuOCJOIDPCsDU5JzMyLjAiVw!5e0!3m2!1sfr!2sci!4v1620000000000!5m2!1sfr!2sci" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

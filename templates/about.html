@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="page-header" style="background: linear-gradient(rgba(17, 34, 51, 0.85), rgba(17, 34, 51, 0.85)), url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;">
+    <div class="container text-center">
+        <h1 class="display-4 font-serif mb-2" data-aos="fade-up">Notre Histoire</h1>
+        <ul class="breadcrumb-custom" data-aos="fade-up" data-aos-delay="100">
+            {% for name, url in breadcrumb %}
+                {% if url %}
+                    <li><a href="{{ url }}">{{ name }}</a></li>
+                {% else %}
+                    <li class="active">{{ name }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<!-- Intro Section -->
+<section class="section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+                <span class="section-subtitle">DEJUC International</span>
+                <h2 class="section-title mb-4">L'excellence juridique au service de vos ambitions</h2>
+                <p class="lead text-dark mb-4">Un cabinet spécialisé, ancré en Côte d'Ivoire avec une vision continentale.</p>
+                <p class="text-muted mb-4">
+                    DEJUC (Dak Expert Jurist Consulting) est né d'un constat simple : les investisseurs et entrepreneurs en Afrique francophone ont besoin d'un partenaire juridique qui allie rigueur académique, connaissance du terrain et rapidité d'exécution.
+                </p>
+                <p class="text-muted mb-4">
+                    Notre cabinet se distingue par son approche préventive des risques (audit, conseil) et sa maîtrise des modes alternatifs de règlement des litiges (médiation, arbitrage), permettant ainsi d'éviter les procédures judiciaires longues et coûteuses.
+                </p>
+                <div class="d-flex align-items-center mt-5">
+                    <img src="{% static 'images/logo.jpg' %}" alt="Logo DEJUC" style="height: 60px; margin-right: 20px;">
+                    <div>
+                        <h5 class="mb-0 font-heading">Cabinet Agréé</h5>
+                        <p class="text-muted small mb-0">RCCM: CI-ABJ-03-2025-B13-00592</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="Bureaux professionnels" class="img-fluid rounded shadow-lg">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Timeline / History -->
+<section class="section bg-gray">
+    <div class="container">
+        <div class="row text-center mb-5" data-aos="fade-up">
+            <div class="col-lg-8 mx-auto">
+                <span class="section-subtitle">Notre Parcours</span>
+                <h2 class="section-title">Les dates clés</h2>
+            </div>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-item left" data-aos="fade-right">
+                <div class="timeline-content">
+                    <div class="timeline-date">14 Novembre 2024</div>
+                    <h4 class="font-heading">Création du Cabinet</h4>
+                    <p class="text-muted mb-0">Début des activités de conseil et d'accompagnement juridique à Abidjan.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item right" data-aos="fade-left">
+                <div class="timeline-content">
+                    <div class="timeline-date">20 Janvier 2025</div>
+                    <h4 class="font-heading">Agrément Officiel</h4>
+                    <p class="text-muted mb-0">Obtention du RCCM et structuration complète sous la forme de SARL U.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item left" data-aos="fade-right">
+                <div class="timeline-content">
+                    <div class="timeline-date">Février 2025</div>
+                    <h4 class="font-heading">Expansion des Bureaux</h4>
+                    <p class="text-muted mb-0">Ouverture des annexes de la Riviera Palmeraie et d'Abatta pour être plus proche de nos clients.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item right" data-aos="fade-left">
+                <div class="timeline-content">
+                    <div class="timeline-date">Aujourd'hui</div>
+                    <h4 class="font-heading">Rayonnement Continental</h4>
+                    <p class="text-muted mb-0">Intervention reconnue en Côte d'Ivoire et accompagnement d'investisseurs à travers l'Afrique francophone.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Founder Section -->
+<section class="section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-5 order-lg-2 mb-5 mb-lg-0" data-aos="fade-left">
+                <div class="position-relative">
+                    <!-- Placeholder pour la photo de M. Gnabro -->
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" alt="M. Dakouri Gnabro" class="img-fluid rounded shadow-lg">
+                    <div class="position-absolute bottom-0 start-0 bg-white p-3 shadow-lg rounded m-3">
+                        <div class="text-center">
+                            <i class="fas fa-balance-scale fs-3 text-secondary mb-2"></i>
+                            <h6 class="font-heading mb-0">Arbitre Agréé</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 offset-lg-1 order-lg-1" data-aos="fade-right">
+                <span class="section-subtitle">Le Fondateur</span>
+                <h2 class="section-title mb-4">M. Dakouri Gnabro</h2>
+                <h5 class="text-primary mb-4 font-heading">Arbitre & Médiateur Professionnel Agréé et Certifié</h5>
+                
+                <p class="text-muted mb-4">
+                    Expert juridique de haut niveau, M. Dakouri Gnabro allie une rigueur institutionnelle à une connaissance profonde des réalités sociologiques et économiques africaines.
+                </p>
+                <p class="text-muted mb-4">
+                    Fort de son expérience en résolution de conflits complexes (fonciers, commerciaux, familiaux), il a fondé DEJUC International Group avec la conviction que la prévention et la médiation sont les clés de la sécurité des affaires en Afrique.
+                </p>
+                
+                <ul class="list-unstyled mt-4">
+                    <li class="mb-3 d-flex align-items-center">
+                        <i class="fas fa-check-circle text-secondary me-3 fs-5"></i>
+                        <span>Spécialiste en Droit OHADA et ingénierie sociétaire</span>
+                    </li>
+                    <li class="mb-3 d-flex align-items-center">
+                        <i class="fas fa-check-circle text-secondary me-3 fs-5"></i>
+                        <span>Expert en audit et sécurisation de titres fonciers</span>
+                    </li>
+                    <li class="mb-3 d-flex align-items-center">
+                        <i class="fas fa-check-circle text-secondary me-3 fs-5"></i>
+                        <span>Médiateur certifié pour les litiges civils et commerciaux</span>
+                    </li>
+                </ul>
+                
+                <a href="https://linkedin.com" target="_blank" class="btn btn-outline-primary mt-3">
+                    <i class="fab fa-linkedin me-2"></i> Profil LinkedIn
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

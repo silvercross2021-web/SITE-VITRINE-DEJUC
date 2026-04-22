@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="page-header" style="background: linear-gradient(rgba(17, 34, 51, 0.85), rgba(17, 34, 51, 0.85)), url('https://images.unsplash.com/photo-1505664173691-a28186981883?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;">
+    <div class="container text-center">
+        <h1 class="display-4 font-serif mb-2" data-aos="fade-up">Actualités Juridiques</h1>
+        <ul class="breadcrumb-custom" data-aos="fade-up" data-aos-delay="100">
+            {% for name, url in breadcrumb %}
+                {% if url %}
+                    <li><a href="{{ url }}">{{ name }}</a></li>
+                {% else %}
+                    <li class="active">{{ name }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <!-- Blog Posts -->
+            <div class="col-lg-8" data-aos="fade-up">
+                <div class="row g-4">
+                    {% for post in posts %}
+                        <div class="col-md-6 mb-4">
+                            <article class="blog-card h-100">
+                                <div class="blog-img-wrapper">
+                                    <img src="{{ post.image_url }}" alt="{{ post.title }}" class="blog-img">
+                                    <div class="blog-category bg-dejuc-{{ post.color|default:'blue' }}">
+                                        {{ post.category_label }}
+                                    </div>
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <span><i class="far fa-calendar-alt"></i> {{ post.date }}</span>
+                                        <span><i class="far fa-clock"></i> {{ post.read_time }} lecture</span>
+                                    </div>
+                                    <h3 class="blog-title font-heading">
+                                        <a href="#">{{ post.title }}</a>
+                                    </h3>
+                                    <p class="blog-excerpt">{{ post.excerpt }}</p>
+                                    <a href="#" class="blog-link mt-auto text-{{ post.color|default:'primary' }}">
+                                        Lire l'article <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+                    {% empty %}
+                        <div class="col-12 text-center py-5">
+                            <i class="far fa-folder-open fs-1 text-muted mb-3"></i>
+                            <h4 class="text-muted">Aucun article trouvé dans cette catégorie.</h4>
+                            <a href="{% url 'blog' %}" class="btn btn-outline-primary mt-3">Retour à tous les articles</a>
+                        </div>
+                    {% endfor %}
+                </div>
+                
+                <!-- Pagination Placeholder -->
+                {% if posts|length > 0 %}
+                <nav aria-label="Page navigation" class="mt-5">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><i class="fas fa-chevron-left"></i></a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
+                        </li>
+                    </ul>
+                </nav>
+                {% endif %}
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="col-lg-4 mt-5 mt-lg-0" data-aos="fade-left">
+                <!-- Search -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body p-4">
+                        <h4 class="font-heading h5 mb-3">Recherche</h4>
+                        <form action="{% url 'blog' %}" method="get">
+                            <div class="input-group">
+                                <input type="text" name="search" class="form-control dejuc-input" placeholder="Mots-clés..." required>
+                                <button class="btn btn-primary bg-primary" type="submit"><i class="fas fa-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Categories -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body p-4">
+                        <h4 class="font-heading h5 mb-3">Catégories</h4>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item px-0 border-light d-flex justify-content-between align-items-center">
+                                <a href="{% url 'blog' %}" class="text-decoration-none {% if not current_category %}text-primary fw-bold{% else %}text-muted{% endif %}">Tous les articles</a>
+                            </li>
+                            <li class="list-group-item px-0 border-light d-flex justify-content-between align-items-center">
+                                <a href="{% url 'blog' %}?category=droit-ohada" class="text-decoration-none {% if current_category == 'droit-ohada' %}text-primary fw-bold{% else %}text-muted{% endif %}">Droit OHADA</a>
+                            </li>
+                            <li class="list-group-item px-0 border-light d-flex justify-content-between align-items-center">
+                                <a href="{% url 'blog' %}?category=immobilier" class="text-decoration-none {% if current_category == 'immobilier' %}text-primary fw-bold{% else %}text-muted{% endif %}">Immobilier & Foncier</a>
+                            </li>
+                            <li class="list-group-item px-0 border-light d-flex justify-content-between align-items-center">
+                                <a href="{% url 'blog' %}?category=arbitrage" class="text-decoration-none {% if current_category == 'arbitrage' %}text-primary fw-bold{% else %}text-muted{% endif %}">Arbitrage & Médiation</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Newsletter -->
+                <div class="card border-0 shadow-sm bg-dark-blue text-white mb-4">
+                    <div class="card-body p-4">
+                        <h4 class="font-heading h5 text-white mb-3">Veille Juridique</h4>
+                        <p class="small opacity-75 mb-4">Abonnez-vous pour recevoir nos dernières analyses juridiques et opportunités d'investissement.</p>
+                        
+                        <form id="newsletter-form">
+                            {% csrf_token %}
+                            <div class="input-group mb-2">
+                                <input type="email" id="newsletter-email" class="form-control border-0" placeholder="Votre email" required>
+                                <button class="btn btn-secondary" type="submit"><i class="fas fa-paper-plane"></i></button>
+                            </div>
+                            <div id="newsletter-message" class="small fw-bold"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

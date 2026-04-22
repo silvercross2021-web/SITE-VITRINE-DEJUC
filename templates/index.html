@@ -1,0 +1,362 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- ==============================================
+     HERO SECTION
+     ============================================== -->
+<section class="hero">
+    <!-- Overlay & Background -->
+    <div class="hero-overlay"></div>
+    <video class="hero-video-bg" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=80">
+        <!-- Fallback to image if video not supported or fails -->
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-business-people-walking-in-a-financial-district-4148-large.mp4" type="video/mp4">
+    </video>
+    
+    <!-- Particles overlay (optional subtle effect) -->
+    <div id="particles-js" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 0;"></div>
+
+    <div class="container hero-content">
+        <div class="row align-items-center">
+            <div class="col-lg-8" data-aos="fade-up" data-aos-duration="1200">
+                <p class="hero-maxim">« Pacta sunt servanda »</p>
+                <h1 class="hero-title">
+                    <span class="typed-text"></span>
+                </h1>
+                <p class="hero-subtitle delay-200 fade-in-up visible">
+                    Cabinet Juridique Spécialisé en Côte d'Ivoire.<br>
+                    Médiation · Arbitrage · Investissement Foncier
+                </p>
+                <div class="d-flex flex-wrap gap-3 mt-4 delay-400 fade-in-up visible">
+                    <a href="#services" class="btn-dejuc btn-primary">Découvrir nos Services</a>
+                    <a href="{% url 'contact' %}" class="btn-dejuc btn-outline-white">Prendre Rendez-vous</a>
+                </div>
+                
+                <!-- Quick Stats -->
+                <div class="row mt-5 pt-4 border-top border-secondary border-opacity-25 delay-500 fade-in-up visible d-none d-md-flex">
+                    <div class="col-auto me-4">
+                        <div class="d-flex align-items-center">
+                            <h2 class="text-secondary mb-0 me-2"><span class="counter-value" data-target="100">0</span>+</h2>
+                            <span class="small text-white-50 lh-sm">Dossiers<br>Traités</span>
+                        </div>
+                    </div>
+                    <div class="col-auto me-4">
+                        <div class="d-flex align-items-center">
+                            <h2 class="text-secondary mb-0 me-2"><span class="counter-value" data-target="6">0</span></h2>
+                            <span class="small text-white-50 lh-sm">Pôles<br>d'Expertise</span>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="d-flex align-items-center">
+                            <h2 class="text-secondary mb-0 me-2"><span class="counter-value" data-target="3">0</span></h2>
+                            <span class="small text-white-50 lh-sm">Bureaux à<br>Abidjan</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Consultation Form (Right side on desktop) -->
+            <div class="col-lg-4 d-none d-lg-block delay-300 fade-in-up visible">
+                <div class="card border-0 shadow-lg" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
+                    <div class="card-body p-4">
+                        <h4 class="text-white mb-3 font-heading">Consultation Rapide</h4>
+                        <p class="text-white-50 small mb-4">Laissez-nous vos coordonnées, un expert vous rappellera rapidement.</p>
+                        
+                        <form action="{% url 'contact' %}" method="post">
+                            {% csrf_token %}
+                            <!-- Map fields to the main contact model -->
+                            <div class="mb-3">
+                                <input type="text" name="first_name" class="form-control dejuc-input bg-white" placeholder="Nom complet" required>
+                                <input type="hidden" name="last_name" value="-"> <!-- Dummy required value -->
+                            </div>
+                            <div class="mb-3">
+                                <input type="tel" name="phone" class="form-control dejuc-input bg-white" placeholder="Téléphone (+225...)" required>
+                                <input type="hidden" name="email" value="consultation@rapide.ci"> <!-- Dummy required value -->
+                                <input type="hidden" name="message" value="Demande de consultation rapide depuis la page d'accueil.">
+                            </div>
+                            <div class="mb-3">
+                                <select name="service" class="form-control dejuc-input bg-white">
+                                    <option value="">Sélectionnez un domaine...</option>
+                                    <option value="arbitrage">Arbitrage & Médiation</option>
+                                    <option value="audit">Investissement Foncier</option>
+                                    <option value="creation">Création de Société</option>
+                                    <option value="autre">Autre demande</option>
+                                </select>
+                            </div>
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" name="gdpr_consent" value="True" id="quick-gdpr" required checked>
+                                <label class="form-check-label text-white-50 small" for="quick-gdpr" style="font-size: 0.75rem;">
+                                    J'accepte d'être recontacté(e)
+                                </label>
+                            </div>
+                            <button type="submit" class="btn-dejuc btn-primary w-100">Être Rappelé</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <a href="#services" class="hero-scroll-indicator">
+        <i class="fas fa-chevron-down"></i>
+    </a>
+</section>
+
+<!-- ==============================================
+     TICKER / MARQUEE SECTION
+     ============================================== -->
+<div class="ticker-wrap">
+    <div class="ticker">
+        {% for service in services %}
+            <div class="ticker-item">
+                {{ service.title }}
+                <i class="fas fa-balance-scale ticker-icon"></i>
+            </div>
+        {% endfor %}
+        <!-- Duplicate for infinite scroll effect -->
+        {% for service in services %}
+            <div class="ticker-item">
+                {{ service.title }}
+                <i class="fas fa-balance-scale ticker-icon"></i>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- ==============================================
+     SERVICES SECTION
+     ============================================== -->
+<section id="services" class="section bg-gray">
+    <div class="container">
+        <div class="row text-center mb-5" data-aos="fade-up">
+            <div class="col-lg-8 mx-auto">
+                <span class="section-subtitle">Nos Domaines d'Intervention</span>
+                <h2 class="section-title">6 Pôles d'Expertise à Votre Service</h2>
+                <p class="text-muted mt-3">Une approche multidisciplinaire pour sécuriser vos projets, résoudre vos litiges et vous accompagner dans votre croissance en Afrique Francophone.</p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            {% for service in services %}
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ forloop.counter|add:1 }}00">
+                    <div class="service-card" data-color="{{ service.color }}">
+                        <div class="service-number">{{ service.number }}</div>
+                        <!-- FontAwesome mapping for icons since Lucide needs JS integration we skipped for simplicity -->
+                        <div class="service-icon">
+                            {% if service.icon == 'scale' %}<i class="fas fa-balance-scale"></i>
+                            {% elif service.icon == 'shield-check' %}<i class="fas fa-shield-alt"></i>
+                            {% elif service.icon == 'file-text' %}<i class="fas fa-file-contract"></i>
+                            {% elif service.icon == 'handshake' %}<i class="fas fa-handshake"></i>
+                            {% elif service.icon == 'gavel' %}<i class="fas fa-gavel"></i>
+                            {% elif service.icon == 'graduation-cap' %}<i class="fas fa-graduation-cap"></i>
+                            {% else %}<i class="fas fa-check-circle"></i>{% endif %}
+                        </div>
+                        <h3 class="service-title font-heading">{{ service.title }}</h3>
+                        <p class="service-desc">{{ service.short_description }}</p>
+                        <a href="{% url 'service_detail' service.slug %}" class="service-link">
+                            En savoir plus <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ==============================================
+     ABOUT & VALUES SECTION
+     ============================================== -->
+<section class="section bg-light overflow-hidden">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+                <div class="position-relative">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="Bureau professionnel" class="img-fluid rounded shadow-lg img-reveal visible">
+                    
+                    <!-- Floating Badge -->
+                    <div class="position-absolute bottom-0 end-0 bg-white p-4 shadow-lg rounded float-anim" style="transform: translate(20%, 20%); z-index: 10;">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; background-color: var(--dejuc-orange) !important;">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-0 font-heading text-dark">Excellence</h5>
+                                <span class="text-muted small">Standard International</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-5 offset-lg-1" data-aos="fade-left">
+                <span class="section-subtitle">Pourquoi Nous Choisir</span>
+                <h2 class="section-title mb-4">Votre Sécurité Juridique, Notre Priorité</h2>
+                
+                <p class="mb-4">
+                    DEJUC International Group est un cabinet d'expertise juridique alliant <span class="highlight-text visible">rigueur institutionnelle</span> et connaissance profonde des réalités africaines. Dirigé par M. Dakouri Gnabro, expert certifié, nous anticipons les risques pour sécuriser vos investissements.
+                </p>
+                
+                <div class="mt-4">
+                    <div class="feature-item">
+                        <div class="feature-icon-wrapper">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <div>
+                            <h4 class="feature-title font-heading">Intégrité & Transparence</h4>
+                            <p class="feature-desc small">La base de chaque partenariat et contrat rédigé par nos experts.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon-wrapper" style="color: var(--dejuc-orange); background-color: rgba(210, 85, 26, 0.1);">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div>
+                            <h4 class="feature-title font-heading">Sécurité Foncitaire</h4>
+                            <p class="feature-desc small">Mieux vaut prévenir que guérir : nous auditons avant tout investissement.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon-wrapper" style="color: var(--dejuc-turquoise); background-color: rgba(46, 196, 192, 0.1);">
+                            <i class="fas fa-globe-africa"></i>
+                        </div>
+                        <div>
+                            <h4 class="feature-title font-heading">Ancrage Africain</h4>
+                            <p class="feature-desc small">Une expertise locale aux standards internationaux (Droit OHADA).</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="{% url 'about' %}" class="btn-dejuc btn-secondary mt-3">En savoir plus sur nous</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==============================================
+     MAXIMS CAROUSEL
+     ============================================== -->
+<section class="maxims-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <i class="fas fa-quote-left text-white-50 fs-1 mb-4"></i>
+                
+                <div class="swiper maxims-slider">
+                    <div class="swiper-wrapper">
+                        {% for maxim in maxims %}
+                            <div class="swiper-slide maxim-slide">
+                                <h2 class="maxim-latin">{{ maxim.latin }}</h2>
+                                <p class="maxim-french">— {{ maxim.french }} —</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==============================================
+     TESTIMONIALS
+     ============================================== -->
+<section class="section bg-gray">
+    <div class="container">
+        <div class="row text-center mb-5" data-aos="fade-up">
+            <div class="col-lg-8 mx-auto">
+                <span class="section-subtitle">Confiance & Résultats</span>
+                <h2 class="section-title">Ce que disent nos clients</h2>
+            </div>
+        </div>
+        
+        <div class="row" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-12">
+                <div class="swiper testimonials-slider pb-5">
+                    <div class="swiper-wrapper">
+                        {% for testimonial in testimonials %}
+                            <div class="swiper-slide">
+                                <div class="testimonial-card">
+                                    <div class="testimonial-rating">
+                                        {% for i in "12345"|make_list %}
+                                            {% if forloop.counter <= testimonial.rating %}
+                                                <i class="fas fa-star"></i>
+                                            {% else %}
+                                                <i class="far fa-star"></i>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <p class="testimonial-content">"{{ testimonial.content }}"</p>
+                                    <div class="testimonial-author">
+                                        <div class="testimonial-avatar" style="background-color: var(--dejuc-{{ testimonial.color }});">
+                                            {{ testimonial.initials }}
+                                        </div>
+                                        <div class="testimonial-info">
+                                            <h5 class="font-heading text-dark">{{ testimonial.name }}</h5>
+                                            <p>{{ testimonial.role }} - {{ testimonial.company }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==============================================
+     CTA SECTION
+     ============================================== -->
+<section class="cta-section" data-aos="fade-in">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="cta-title font-serif">Sécurisez vos projets avec des experts</h2>
+                <p class="cta-desc">Une consultation initiale gratuite pour évaluer vos besoins juridiques et proposer des solutions concrètes.</p>
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <a href="{% url 'contact' %}" class="btn-dejuc btn-primary bg-white text-primary px-5">Prendre Rendez-vous</a>
+                    <a href="tel:+2250778488405" class="btn-dejuc btn-outline-white"><i class="fas fa-phone-alt me-2"></i> +225 07 78 48 84 05</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    // Initialize Particles JS for Hero background if available
+    document.addEventListener('DOMContentLoaded', function() {
+        if(typeof particlesJS !== 'undefined') {
+            particlesJS('particles-js',
+            {
+                "particles": {
+                    "number": {"value": 40, "density": {"enable": true, "value_area": 800}},
+                    "color": {"value": "#ffffff"},
+                    "shape": {"type": "circle", "stroke": {"width": 0, "color": "#000000"}},
+                    "opacity": {"value": 0.2, "random": false},
+                    "size": {"value": 3, "random": true},
+                    "line_linked": {"enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.1, "width": 1},
+                    "move": {"enable": true, "speed": 1, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false}
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {"enable": true, "mode": "grab"},
+                        "onclick": {"enable": false},
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {"distance": 140, "line_linked": {"opacity": 0.5}}
+                    }
+                },
+                "retina_detect": true
+            });
+        }
+    });
+</script>
+{% endblock %}

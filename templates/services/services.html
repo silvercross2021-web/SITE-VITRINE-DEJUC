@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="page-header" style="background: linear-gradient(rgba(17, 34, 51, 0.85), rgba(17, 34, 51, 0.85)), url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;">
+    <div class="container text-center">
+        <h1 class="display-4 font-serif mb-2" data-aos="fade-up">Nos Pôles d'Expertise</h1>
+        <ul class="breadcrumb-custom" data-aos="fade-up" data-aos-delay="100">
+            {% for name, url in breadcrumb %}
+                {% if url %}
+                    <li><a href="{{ url }}">{{ name }}</a></li>
+                {% else %}
+                    <li class="active">{{ name }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<section class="section bg-light">
+    <div class="container">
+        <div class="row text-center mb-5" data-aos="fade-up">
+            <div class="col-lg-8 mx-auto">
+                <span class="section-subtitle">Solutions Complètes</span>
+                <h2 class="section-title">Comment nous vous accompagnons</h2>
+                <p class="text-muted mt-3">Découvrez en détail nos 6 pôles d'expertise conçus pour couvrir l'ensemble de vos besoins juridiques et stratégiques.</p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            {% for service in services %}
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ forloop.counter|add:1 }}00">
+                    <div class="service-card" data-color="{{ service.color }}">
+                        <div class="service-number">{{ service.number }}</div>
+                        <div class="service-icon">
+                            {% if service.icon == 'scale' %}<i class="fas fa-balance-scale"></i>
+                            {% elif service.icon == 'shield-check' %}<i class="fas fa-shield-alt"></i>
+                            {% elif service.icon == 'file-text' %}<i class="fas fa-file-contract"></i>
+                            {% elif service.icon == 'handshake' %}<i class="fas fa-handshake"></i>
+                            {% elif service.icon == 'gavel' %}<i class="fas fa-gavel"></i>
+                            {% elif service.icon == 'graduation-cap' %}<i class="fas fa-graduation-cap"></i>
+                            {% else %}<i class="fas fa-check-circle"></i>{% endif %}
+                        </div>
+                        <h3 class="service-title font-heading">{{ service.title }}</h3>
+                        <p class="service-desc">{{ service.short_description }}</p>
+                        
+                        <hr class="border-secondary opacity-25 my-4">
+                        
+                        <ul class="list-unstyled mb-4 text-muted small">
+                            {% for feature in service.features|slice:":3" %}
+                                <li class="mb-2"><i class="fas fa-check text-secondary me-2"></i> {{ feature }}</li>
+                            {% endfor %}
+                        </ul>
+                        
+                        <a href="{% url 'service_detail' service.slug %}" class="service-link">
+                            Découvrir ce pôle <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Call to action pour les services -->
+<section class="section bg-dark-blue text-white text-center">
+    <div class="container">
+        <h2 class="font-serif mb-4" data-aos="fade-up">Un besoin spécifique ?</h2>
+        <p class="lead mb-5 opacity-75" data-aos="fade-up" data-aos-delay="100">Nos experts évaluent votre situation lors d'une première consultation confidentielle.</p>
+        <a href="{% url 'contact' %}" class="btn-dejuc btn-primary" data-aos="fade-up" data-aos-delay="200">Demander une consultation</a>
+    </div>
+</section>
+{% endblock %}

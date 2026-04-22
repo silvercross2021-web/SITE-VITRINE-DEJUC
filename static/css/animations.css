@@ -1,0 +1,145 @@
+/**
+ * Animations and Micro-interactions for DEJUC Site
+ */
+
+/* Fade In Up */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered Delay Classes */
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-500 { transition-delay: 0.5s; }
+
+/* Scale Hover Effect */
+.scale-hover {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.scale-hover:hover {
+  transform: scale(1.05);
+}
+
+/* Image Reveal */
+.img-reveal {
+  position: relative;
+  overflow: hidden;
+}
+
+.img-reveal::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--dejuc-blue);
+  transform-origin: left;
+  transform: scaleX(1);
+  transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+  z-index: 1;
+}
+
+.img-reveal.visible::after {
+  transform: scaleX(0);
+  transform-origin: right;
+}
+
+.img-reveal img {
+  opacity: 0;
+  transition: opacity 0.1s 0.4s;
+}
+
+.img-reveal.visible img {
+  opacity: 1;
+}
+
+/* Typewriter Cursor */
+.typed-cursor {
+  opacity: 1;
+  animation: blink 0.7s infinite;
+  color: var(--dejuc-orange);
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Float Animation */
+.float-anim {
+  animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0% { transform: translate(0,  0px); }
+  50%  { transform: translate(0, 15px); }
+  100%   { transform: translate(0, -0px); }   
+}
+
+/* Pulse Animation */
+.pulse-anim {
+  animation: pulsing 2s infinite;
+}
+
+@keyframes pulsing {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(210, 85, 26, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(210, 85, 26, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(210, 85, 26, 0); }
+}
+
+/* Preloader */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-light);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s ease;
+}
+
+.loader-logo {
+  width: 100px;
+  animation: pulse-anim 2s infinite;
+}
+
+/* Text Highlight */
+.highlight-text {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+
+.highlight-text::before {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background-color: rgba(46, 196, 192, 0.3); /* Turquoise alpha */
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+}
+
+.highlight-text.visible::before {
+  transform: scaleX(1);
+}
