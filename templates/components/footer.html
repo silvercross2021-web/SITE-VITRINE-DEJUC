@@ -1,77 +1,98 @@
 {% load static %}
-<footer class="site-footer" style="background: #081119; color: rgba(255,255,255,0.6); font-size: 0.8rem; padding: 40px 0 15px;">
+<footer class="site-footer" style="background: #081119; color: rgba(255,255,255,0.6);">
+    <style>
+        .site-footer { padding: 60px 0 20px; font-size: 0.85rem; }
+        .footer-heading {
+            color: #fff; text-transform: uppercase; margin-bottom: 1.5rem;
+            font-size: 0.85rem; letter-spacing: 1px;
+            border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px;
+            display: inline-block;
+        }
+        .footer-newsletter-input::placeholder { color: rgba(255, 255, 255, 0.4) !important; }
+        .footer-newsletter-input:focus { border-bottom-color: var(--dejuc-orange) !important; box-shadow: none !important; }
+        .footer-link { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s; }
+        .footer-link:hover { color: #fff; }
+        .footer-icon-btn {
+            width: 32px; height: 32px; background: rgba(255,255,255,0.05); color: #fff; 
+            border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+            transition: all 0.3s; text-decoration: none;
+        }
+        .footer-icon-btn:hover { background: var(--dejuc-orange); color: #fff; transform: translateY(-2px); }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 767px) {
+            .site-footer { padding: 40px 0 15px; }
+            .site-footer .footer-col { margin-bottom: 30px; text-align: left !important; }
+            .site-footer .footer-heading { margin-bottom: 1rem; font-size: 0.9rem; border-bottom: none; padding-bottom: 0; }
+            .footer-contact-item { justify-content: flex-start !important; }
+            .footer-social-group { justify-content: flex-start !important; }
+            .footer-logo-container { text-align: left !important; }
+            .footer-bottom-row { flex-direction: column; text-align: center; gap: 10px; }
+        }
+    </style>
+
     <div class="container">
-        <div class="row justify-content-between g-4 mb-4">
+        <div class="row justify-content-between g-4 mb-2 mb-md-4">
             <!-- Brand Column -->
-            <div class="col-lg-3 col-md-6 text-center text-md-start">
-                <div class="bg-white d-inline-block px-2 py-1 rounded mb-3">
-                    <img src="{% static 'images/logo.jpg' %}" alt="DEJUC Logo" style="height: 30px; object-fit: contain;">
+            <div class="col-lg-3 col-md-6 footer-col">
+                <div class="footer-logo-container mb-3">
+                    <div class="bg-white d-inline-block px-2 py-1 rounded">
+                        <img src="{% static 'images/logo.jpg' %}" alt="DEJUC Logo" style="height: 35px; object-fit: contain;">
+                    </div>
                 </div>
-                <p class="mb-3" style="font-size: 0.75rem; line-height: 1.6; color: rgba(255,255,255,0.5);">
+                <p class="mb-4" style="line-height: 1.6; color: rgba(255,255,255,0.5);">
                     Cabinet d'expertise juridique et stratégique. Médiation, arbitrage, et investissement foncier en Afrique Francophone.
                 </p>
-                <div class="d-flex justify-content-center justify-content-md-start gap-2">
-                    <a href="#" class="rounded-circle d-flex align-items-center justify-content-center" style="width: 28px; height: 28px; background: rgba(255,255,255,0.05); color: #fff; transition: background 0.3s;" onmouseover="this.style.background='#d2551a'" onmouseout="this.style.background='rgba(255,255,255,0.05)'"><i class="fab fa-linkedin-in" style="font-size: 0.75rem;"></i></a>
-                    <a href="#" class="rounded-circle d-flex align-items-center justify-content-center" style="width: 28px; height: 28px; background: rgba(255,255,255,0.05); color: #fff; transition: background 0.3s;" onmouseover="this.style.background='#d2551a'" onmouseout="this.style.background='rgba(255,255,255,0.05)'"><i class="fab fa-facebook-f" style="font-size: 0.75rem;"></i></a>
-                    <a href="https://wa.me/2250778488405" class="rounded-circle d-flex align-items-center justify-content-center" style="width: 28px; height: 28px; background: rgba(255,255,255,0.05); color: #fff; transition: background 0.3s;" onmouseover="this.style.background='#d2551a'" onmouseout="this.style.background='rgba(255,255,255,0.05)'"><i class="fab fa-whatsapp" style="font-size: 0.75rem;"></i></a>
+                <div class="d-flex gap-2 footer-social-group">
+                    <a href="#" class="footer-icon-btn"><i class="fab fa-linkedin-in" style="font-size: 0.85rem;"></i></a>
+                    <a href="#" class="footer-icon-btn"><i class="fab fa-facebook-f" style="font-size: 0.85rem;"></i></a>
+                    <a href="https://wa.me/2250778488405" class="footer-icon-btn"><i class="fab fa-whatsapp" style="font-size: 0.85rem;"></i></a>
                 </div>
             </div>
 
             <!-- Expertises -->
-            <div class="col-lg-3 col-md-6 text-center text-md-start">
-                <h5 class="text-white text-uppercase mb-3" style="font-size: 0.8rem; letter-spacing: 1px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px; display: inline-block;">Pôles d'Expertise</h5>
-                <ul class="list-unstyled mb-0" style="line-height: 1.8;">
-                    <li><a href="{% url 'service_detail' 'arbitrage-mediation' %}" class="text-decoration-none" style="color: rgba(255,255,255,0.6); transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Arbitrage & Médiation</a></li>
-                    <li><a href="{% url 'service_detail' 'audit-securite-juridique' %}" class="text-decoration-none" style="color: rgba(255,255,255,0.6); transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Audit & Sécurité</a></li>
-                    <li><a href="{% url 'service_detail' 'creation-societes-contrats' %}" class="text-decoration-none" style="color: rgba(255,255,255,0.6); transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Création de Sociétés</a></li>
-                    <li><a href="{% url 'service_detail' 'representation-intermediation' %}" class="text-decoration-none" style="color: rgba(255,255,255,0.6); transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Représentation</a></li>
-                    <li><a href="{% url 'contact' %}" class="text-decoration-none text-dejuc-orange fw-bold" style="transition: color 0.3s;">Toutes nos expertises <i class="fas fa-arrow-right ms-1 small"></i></a></li>
+            <div class="col-lg-3 col-md-6 footer-col">
+                <h5 class="footer-heading">Pôles d'Expertise</h5>
+                <ul class="list-unstyled mb-0" style="line-height: 2;">
+                    <li><a href="{% url 'service_detail' 'arbitrage-mediation' %}" class="footer-link">Arbitrage & Médiation</a></li>
+                    <li><a href="{% url 'service_detail' 'audit-securite-juridique' %}" class="footer-link">Audit & Sécurité</a></li>
+                    <li><a href="{% url 'service_detail' 'creation-societes-contrats' %}" class="footer-link">Création de Sociétés</a></li>
+                    <li><a href="{% url 'service_detail' 'representation-intermediation' %}" class="footer-link">Représentation</a></li>
+                    <li><a href="{% url 'contact' %}" class="footer-link fw-bold" style="color: var(--dejuc-orange);">Toutes expertises <i class="fas fa-arrow-right ms-1 small"></i></a></li>
                 </ul>
             </div>
 
             <!-- Contacts -->
-            <div class="col-lg-3 col-md-6 text-center text-md-start">
-                <h5 class="text-white text-uppercase mb-3" style="font-size: 0.8rem; letter-spacing: 1px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px; display: inline-block;">Siège & Contacts</h5>
-                
-                <div class="d-flex align-items-start justify-content-center justify-content-md-start mb-2">
-                    <i class="fas fa-map-marker-alt mt-1 me-2" style="color: #d2551a; width: 12px; text-align: center;"></i>
-                    <span style="line-height: 1.4;">Abidjan, Cocody Angré<br>Lot 104, Ilot 257</span>
+            <div class="col-lg-3 col-md-6 footer-col">
+                <h5 class="footer-heading">Siège & Contacts</h5>
+                <div class="d-flex align-items-start mb-3 footer-contact-item">
+                    <i class="fas fa-map-marker-alt mt-1 me-3" style="color: var(--dejuc-orange);"></i>
+                    <span style="line-height: 1.5;">Abidjan, Cocody Angré<br>Lot 104, Ilot 257</span>
                 </div>
-                
-                <div class="d-flex align-items-start justify-content-center justify-content-md-start mb-2">
-                    <i class="fas fa-phone-alt mt-1 me-2" style="color: #d2551a; width: 12px; text-align: center;"></i>
-                    <div style="line-height: 1.4;">
-                        <a href="tel:+2250778488405" class="text-decoration-none d-block" style="color: rgba(255,255,255,0.6); transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">+225 07 78 48 84 05</a>
-                        <a href="tel:+2250716339405" class="text-decoration-none d-block" style="color: rgba(255,255,255,0.6); transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">+225 07 16 33 94 05</a>
+                <div class="d-flex align-items-start mb-3 footer-contact-item">
+                    <i class="fas fa-phone-alt mt-1 me-3" style="color: var(--dejuc-orange);"></i>
+                    <div style="line-height: 1.5;">
+                        <a href="tel:+2250778488405" class="footer-link d-block">+225 07 78 48 84 05</a>
+                        <a href="tel:+2250716339405" class="footer-link d-block">+225 07 16 33 94 05</a>
                     </div>
                 </div>
-                
-                <div class="d-flex align-items-start justify-content-center justify-content-md-start">
-                    <i class="fas fa-envelope mt-1 me-2" style="color: #d2551a; width: 12px; text-align: center;"></i>
-                    <a href="mailto:infodejucinternational@gmail.com" class="text-decoration-none" style="color: rgba(255,255,255,0.6); word-break: break-all; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">
+                <div class="d-flex align-items-start footer-contact-item">
+                    <i class="fas fa-envelope mt-1 me-3" style="color: var(--dejuc-orange);"></i>
+                    <a href="mailto:infodejucinternational@gmail.com" class="footer-link" style="word-break: break-all;">
                         infodejucinternational@gmail.com
                     </a>
                 </div>
             </div>
             
             <!-- Newsletter -->
-            <div class="col-lg-3 col-md-6 text-center text-md-start">
-                <style>
-                    .footer-newsletter-input::placeholder {
-                        color: rgba(255, 255, 255, 0.4) !important;
-                    }
-                    .footer-newsletter-input:focus {
-                        border-bottom-color: var(--dejuc-orange) !important;
-                        box-shadow: none !important;
-                    }
-                </style>
-                <h5 class="text-white text-uppercase mb-3" style="font-size: 0.8rem; letter-spacing: 1px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px; display: inline-block;">Veille Juridique</h5>
-                <p class="mb-3" style="font-size: 0.75rem; line-height: 1.6; color: rgba(255,255,255,0.5);">
-                    Abonnez-vous pour recevoir nos dernières analyses et opportunités.
+            <div class="col-lg-3 col-md-6 footer-col">
+                <h5 class="footer-heading">Veille Juridique</h5>
+                <p class="mb-3" style="line-height: 1.5; color: rgba(255,255,255,0.5);">
+                    Abonnez-vous pour recevoir nos dernières analyses.
                 </p>
-                <form id="footer-newsletter-form" class="mt-2">
+                <form id="footer-newsletter-form">
                     <div class="position-relative">
-                        <input type="email" class="form-control footer-newsletter-input bg-transparent shadow-none" placeholder="Votre adresse email..." required style="border: none; border-bottom: 1px solid rgba(255,255,255,0.2); border-radius: 0; padding: 10px 40px 10px 0; color: #fff; font-size: 0.8rem; transition: border-color 0.3s ease;">
+                        <input type="email" class="form-control footer-newsletter-input bg-transparent shadow-none" placeholder="Votre email..." required style="border: none; border-bottom: 1px solid rgba(255,255,255,0.2); border-radius: 0; padding: 10px 40px 10px 0; color: #fff; font-size: 0.9rem; transition: border-color 0.3s ease;">
                         <button type="submit" class="btn p-0 border-0 position-absolute" style="right: 0; top: 50%; transform: translateY(-50%); color: var(--dejuc-orange); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-50%) translateX(3px)'" onmouseout="this.style.transform='translateY(-50%)'">
                             <i class="fas fa-paper-plane"></i>
                         </button>
@@ -81,21 +102,21 @@
         </div>
 
         <!-- Copyright & Signature -->
-        <div class="row border-top border-secondary border-opacity-25 pt-3 align-items-center">
-            <div class="col-lg-4 text-center text-lg-start mb-2 mb-lg-0">
-                <span style="font-size: 0.7rem; color: rgba(255,255,255,0.4);">&copy; {% now "Y" %} DAK EXPERT JURIST CONSULTING (DEJUC).</span>
+        <div class="row border-top border-secondary border-opacity-25 pt-4 pb-2 align-items-center footer-bottom-row">
+            <div class="col-lg-4 text-lg-start">
+                <span style="font-size: 0.75rem; color: rgba(255,255,255,0.4);">&copy; {% now "Y" %} DEJUC. Tous droits réservés.</span>
             </div>
             
             <!-- Signature Voilée -->
-            <div class="col-lg-4 text-center mb-2 mb-lg-0">
-                <span style="font-size: 0.7rem; color: rgba(255,255,255,0.15); transition: color 0.3s; cursor: default;" onmouseover="this.style.color='rgba(255,255,255,0.4)'" onmouseout="this.style.color='rgba(255,255,255,0.15)'">
-                    Designed with <i class="fas fa-bolt mx-1" style="color: #d2551a;"></i> by 
+            <div class="col-lg-4 text-center">
+                <span style="font-size: 0.75rem; color: rgba(255,255,255,0.15); transition: color 0.3s; cursor: default;" onmouseover="this.style.color='rgba(255,255,255,0.4)'" onmouseout="this.style.color='rgba(255,255,255,0.15)'">
+                    Designed with <i class="fas fa-bolt mx-1" style="color: var(--dejuc-orange);"></i> by 
                     <span style="font-weight: 600; letter-spacing: 2px;">SILVERCROSS</span>
                 </span>
             </div>
 
-            <div class="col-lg-4 text-center text-lg-end">
-                <span style="font-size: 0.7rem; color: rgba(255,255,255,0.4);">RCCM: CI-ABJ-03-2025-B13-00592 &nbsp;|&nbsp; N° CC: 2500941D</span>
+            <div class="col-lg-4 text-lg-end">
+                <span style="font-size: 0.75rem; color: rgba(255,255,255,0.4);">RCCM: CI-ABJ-03-2025-B13-00592 &nbsp;|&nbsp; CC: 2500941D</span>
             </div>
         </div>
     </div>
