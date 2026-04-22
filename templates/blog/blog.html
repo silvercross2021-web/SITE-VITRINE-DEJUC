@@ -2,47 +2,51 @@
 {% load static %}
 
 {% block content %}
-<!-- Page Header -->
-<div class="page-header" style="background: linear-gradient(rgba(17, 34, 51, 0.85), rgba(17, 34, 51, 0.85)), url('https://images.unsplash.com/photo-1505664173691-a28186981883?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;">
-    <div class="container text-center">
-        <h1 class="display-4 font-serif mb-2" data-aos="fade-up">Actualités Juridiques</h1>
-        <ul class="breadcrumb-custom" data-aos="fade-up" data-aos-delay="100">
-            {% for name, url in breadcrumb %}
-                {% if url %}
-                    <li><a href="{{ url }}">{{ name }}</a></li>
-                {% else %}
-                    <li class="active">{{ name }}</li>
-                {% endif %}
-            {% endfor %}
-        </ul>
+<!-- Premium Page Header -->
+<div class="page-header position-relative" style="background: linear-gradient(rgba(8, 17, 25, 0.8), rgba(8, 17, 25, 0.95)), url('https://images.unsplash.com/photo-1505664173691-a28186981883?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat; padding: 180px 0 100px;">
+    <div class="container text-center position-relative z-1">
+        <span class="d-inline-block px-3 py-1 mb-3 rounded-pill text-uppercase" style="background: rgba(210,85,26,0.15); color: var(--dejuc-orange); letter-spacing: 2px; font-size: 0.8rem; font-weight: 700;" data-aos="fade-down">Veille & Analyses</span>
+        <h1 class="display-3 font-serif mb-4 text-white" style="font-weight: 300;" data-aos="fade-up" data-aos-delay="100">Actualités <span class="fw-bold" style="color: var(--dejuc-orange);">Juridiques</span></h1>
+        
+        <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
+            <ol class="breadcrumb justify-content-center mb-0">
+                {% for name, url in breadcrumb %}
+                    {% if url %}
+                        <li class="breadcrumb-item"><a href="{{ url }}" class="text-white-50 text-decoration-none">{{ name }}</a></li>
+                    {% else %}
+                        <li class="breadcrumb-item active text-white" aria-current="page">{{ name }}</li>
+                    {% endif %}
+                {% endfor %}
+            </ol>
+        </nav>
     </div>
 </div>
 
-<section class="section">
+<section class="section py-5 my-4 bg-light">
     <div class="container">
-        <div class="row">
+        <div class="row gx-5">
             <!-- Blog Posts -->
             <div class="col-lg-8" data-aos="fade-up">
                 <div class="row g-4">
                     {% for post in posts %}
                         <div class="col-md-6 mb-4">
-                            <article class="blog-card h-100">
-                                <div class="blog-img-wrapper">
-                                    <img src="{{ post.image_url }}" alt="{{ post.title }}" class="blog-img">
-                                    <div class="blog-category bg-dejuc-{{ post.color|default:'blue' }}">
+                            <article class="blog-card-premium">
+                                <div class="blog-img-wrapper-premium">
+                                    <img src="{{ post.image_url }}" alt="{{ post.title }}">
+                                    <div class="blog-category-premium">
                                         {{ post.category_label }}
                                     </div>
                                 </div>
-                                <div class="blog-content">
-                                    <div class="blog-meta">
-                                        <span><i class="far fa-calendar-alt"></i> {{ post.date }}</span>
-                                        <span><i class="far fa-clock"></i> {{ post.read_time }} lecture</span>
+                                <div class="blog-content-premium">
+                                    <div class="blog-meta-premium">
+                                        <span><i class="far fa-calendar-alt me-2"></i>{{ post.date }}</span>
+                                        <span><i class="far fa-clock me-2"></i>{{ post.read_time }} lecture</span>
                                     </div>
-                                    <h3 class="blog-title font-heading">
+                                    <h3 class="blog-title-premium font-serif">
                                         <a href="#">{{ post.title }}</a>
                                     </h3>
-                                    <p class="blog-excerpt">{{ post.excerpt }}</p>
-                                    <a href="#" class="blog-link mt-auto text-{{ post.color|default:'primary' }}">
+                                    <p class="blog-excerpt-premium">{{ post.excerpt }}</p>
+                                    <a href="#" class="blog-link-premium mt-auto" style="color: var(--dejuc-orange);">
                                         Lire l'article <i class="fas fa-arrow-right"></i>
                                     </a>
                                 </div>
@@ -50,79 +54,97 @@
                         </div>
                     {% empty %}
                         <div class="col-12 text-center py-5">
-                            <i class="far fa-folder-open fs-1 text-muted mb-3"></i>
-                            <h4 class="text-muted">Aucun article trouvé dans cette catégorie.</h4>
-                            <a href="{% url 'blog' %}" class="btn btn-outline-primary mt-3">Retour à tous les articles</a>
+                            <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-4" style="width: 80px; height: 80px; background: rgba(0,0,0,0.05); font-size: 2rem; color: #aaa;">
+                                <i class="far fa-folder-open"></i>
+                            </div>
+                            <h4 class="font-serif text-muted mb-3">Aucun article trouvé dans cette catégorie.</h4>
+                            <p class="text-muted mb-4">Revenez bientôt ou parcourez nos autres publications.</p>
+                            <a href="{% url 'blog' %}" class="btn btn-premium rounded-pill px-4 text-uppercase" style="letter-spacing: 1px;">Retour à tous les articles</a>
                         </div>
                     {% endfor %}
                 </div>
                 
-                <!-- Pagination Placeholder -->
+                <!-- Pagination -->
                 {% if posts|length > 0 %}
-                <nav aria-label="Page navigation" class="mt-5">
-                    <ul class="pagination justify-content-center">
+                <nav aria-label="Page navigation" class="mt-5 pt-4 border-top">
+                    <ul class="pagination justify-content-center custom-pagination gap-2">
                         <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><i class="fas fa-chevron-left"></i></a>
+                            <a class="page-link rounded-circle border-0 d-flex align-items-center justify-content-center shadow-sm" href="#" style="width: 45px; height: 45px;" tabindex="-1" aria-disabled="true"><i class="fas fa-chevron-left"></i></a>
                         </li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item active"><a class="page-link rounded-circle border-0 d-flex align-items-center justify-content-center shadow-sm" style="width: 45px; height: 45px; background-color: var(--dejuc-orange);" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link rounded-circle border-0 d-flex align-items-center justify-content-center shadow-sm" style="width: 45px; height: 45px; color: var(--dejuc-blue-dark);" href="#">2</a></li>
                         <li class="page-item">
-                            <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
+                            <a class="page-link rounded-circle border-0 d-flex align-items-center justify-content-center shadow-sm" style="width: 45px; height: 45px; color: var(--dejuc-blue-dark);" href="#"><i class="fas fa-chevron-right"></i></a>
                         </li>
                     </ul>
                 </nav>
                 {% endif %}
             </div>
             
-            <!-- Sidebar -->
-            <div class="col-lg-4 mt-5 mt-lg-0" data-aos="fade-left">
+            <!-- Premium Sidebar -->
+            <div class="col-lg-4 mt-5 mt-lg-0" data-aos="fade-left" data-aos-delay="200">
                 <!-- Search -->
-                <div class="card border-0 shadow-sm mb-4">
+                <div class="card border-0 shadow-sm mb-4" style="border-radius: 16px;">
                     <div class="card-body p-4">
-                        <h4 class="font-heading h5 mb-3">Recherche</h4>
+                        <h4 class="font-heading h5 mb-3 text-dark fw-bold text-uppercase" style="letter-spacing: 1px; font-size: 0.9rem;">Recherche</h4>
                         <form action="{% url 'blog' %}" method="get">
                             <div class="input-group">
-                                <input type="text" name="search" class="form-control dejuc-input" placeholder="Mots-clés..." required>
-                                <button class="btn btn-primary bg-primary" type="submit"><i class="fas fa-search"></i></button>
+                                <input type="text" name="search" class="form-control bg-light border-0 shadow-none px-3" placeholder="Mots-clés..." required style="border-radius: 8px 0 0 8px;">
+                                <button class="btn btn-premium border-0" type="submit" style="border-radius: 0 8px 8px 0;"><i class="fas fa-search"></i></button>
                             </div>
                         </form>
                     </div>
                 </div>
                 
                 <!-- Categories -->
-                <div class="card border-0 shadow-sm mb-4">
+                <div class="card border-0 shadow-sm mb-4" style="border-radius: 16px;">
                     <div class="card-body p-4">
-                        <h4 class="font-heading h5 mb-3">Catégories</h4>
+                        <h4 class="font-heading h5 mb-4 text-dark fw-bold text-uppercase" style="letter-spacing: 1px; font-size: 0.9rem;">Catégories</h4>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item px-0 border-light d-flex justify-content-between align-items-center">
-                                <a href="{% url 'blog' %}" class="text-decoration-none {% if not current_category %}text-primary fw-bold{% else %}text-muted{% endif %}">Tous les articles</a>
+                            <li class="list-group-item px-0 border-0 mb-2 bg-transparent">
+                                <a href="{% url 'blog' %}" class="d-flex align-items-center text-decoration-none {% if not current_category %}text-dejuc-orange fw-bold{% else %}text-muted{% endif %}" style="transition: color 0.3s ease;">
+                                    <i class="fas fa-angle-right me-3 fs-6 {% if not current_category %}text-dejuc-orange{% else %}text-black-50{% endif %}"></i> Tous les articles
+                                </a>
                             </li>
-                            <li class="list-group-item px-0 border-light d-flex justify-content-between align-items-center">
-                                <a href="{% url 'blog' %}?category=droit-ohada" class="text-decoration-none {% if current_category == 'droit-ohada' %}text-primary fw-bold{% else %}text-muted{% endif %}">Droit OHADA</a>
+                            <li class="list-group-item px-0 border-0 mb-2 bg-transparent">
+                                <a href="{% url 'blog' %}?category=droit-ohada" class="d-flex align-items-center text-decoration-none {% if current_category == 'droit-ohada' %}text-dejuc-orange fw-bold{% else %}text-muted{% endif %}" style="transition: color 0.3s ease;">
+                                    <i class="fas fa-angle-right me-3 fs-6 {% if current_category == 'droit-ohada' %}text-dejuc-orange{% else %}text-black-50{% endif %}"></i> Droit OHADA
+                                </a>
                             </li>
-                            <li class="list-group-item px-0 border-light d-flex justify-content-between align-items-center">
-                                <a href="{% url 'blog' %}?category=immobilier" class="text-decoration-none {% if current_category == 'immobilier' %}text-primary fw-bold{% else %}text-muted{% endif %}">Immobilier & Foncier</a>
+                            <li class="list-group-item px-0 border-0 mb-2 bg-transparent">
+                                <a href="{% url 'blog' %}?category=immobilier" class="d-flex align-items-center text-decoration-none {% if current_category == 'immobilier' %}text-dejuc-orange fw-bold{% else %}text-muted{% endif %}" style="transition: color 0.3s ease;">
+                                    <i class="fas fa-angle-right me-3 fs-6 {% if current_category == 'immobilier' %}text-dejuc-orange{% else %}text-black-50{% endif %}"></i> Immobilier & Foncier
+                                </a>
                             </li>
-                            <li class="list-group-item px-0 border-light d-flex justify-content-between align-items-center">
-                                <a href="{% url 'blog' %}?category=arbitrage" class="text-decoration-none {% if current_category == 'arbitrage' %}text-primary fw-bold{% else %}text-muted{% endif %}">Arbitrage & Médiation</a>
+                            <li class="list-group-item px-0 border-0 mb-0 bg-transparent">
+                                <a href="{% url 'blog' %}?category=arbitrage" class="d-flex align-items-center text-decoration-none {% if current_category == 'arbitrage' %}text-dejuc-orange fw-bold{% else %}text-muted{% endif %}" style="transition: color 0.3s ease;">
+                                    <i class="fas fa-angle-right me-3 fs-6 {% if current_category == 'arbitrage' %}text-dejuc-orange{% else %}text-black-50{% endif %}"></i> Arbitrage & Médiation
+                                </a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 
                 <!-- Newsletter -->
-                <div class="card border-0 shadow-sm bg-dark-blue text-white mb-4">
-                    <div class="card-body p-4">
-                        <h4 class="font-heading h5 text-white mb-3">Veille Juridique</h4>
-                        <p class="small opacity-75 mb-4">Abonnez-vous pour recevoir nos dernières analyses juridiques et opportunités d'investissement.</p>
+                <div class="card border-0 shadow-lg mb-4 position-relative overflow-hidden" style="border-radius: 16px;">
+                    <div class="card-body p-4 position-relative z-1" style="background: linear-gradient(135deg, var(--dejuc-blue-dark) 0%, var(--dejuc-blue) 100%);">
+                        <!-- Decorative bg -->
+                        <div class="position-absolute" style="top: -30px; right: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(210,85,26,0.3) 0%, transparent 70%); z-index: -1;"></div>
+                        
+                        <h4 class="font-heading h5 text-white mb-3 fw-bold text-uppercase" style="letter-spacing: 1px; font-size: 1rem;">Veille Juridique</h4>
+                        <p class="small text-white-50 lh-lg mb-4">Abonnez-vous pour recevoir nos dernières analyses juridiques et opportunités d'investissement.</p>
                         
                         <form id="newsletter-form">
                             {% csrf_token %}
                             <div class="input-group mb-2">
-                                <input type="email" id="newsletter-email" class="form-control border-0" placeholder="Votre email" required>
-                                <button class="btn btn-secondary" type="submit"><i class="fas fa-paper-plane"></i></button>
+                                <input type="email" id="newsletter-email" class="form-control bg-transparent text-white border-secondary shadow-none" placeholder="Votre email" required style="border-radius: 8px 0 0 8px;">
+                                <button class="btn btn-premium border-0" type="submit" style="border-radius: 0 8px 8px 0;"><i class="fas fa-paper-plane"></i></button>
                             </div>
-                            <div id="newsletter-message" class="small fw-bold"></div>
+                            <div class="form-check mt-3">
+                                <input class="form-check-input border-secondary bg-transparent" type="checkbox" id="news-consent" required>
+                                <label class="form-check-label text-white-50 small" for="news-consent" style="font-size: 0.75rem;">J'accepte de recevoir des emails</label>
+                            </div>
+                            <div id="newsletter-message" class="small fw-bold mt-2"></div>
                         </form>
                     </div>
                 </div>

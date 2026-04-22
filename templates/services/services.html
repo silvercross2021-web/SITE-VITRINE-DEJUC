@@ -2,33 +2,37 @@
 {% load static %}
 
 {% block content %}
-<!-- Page Header -->
-<div class="page-header" style="background: linear-gradient(rgba(17, 34, 51, 0.85), rgba(17, 34, 51, 0.85)), url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;">
-    <div class="container text-center">
-        <h1 class="display-4 font-serif mb-2" data-aos="fade-up">Nos Pôles d'Expertise</h1>
-        <ul class="breadcrumb-custom" data-aos="fade-up" data-aos-delay="100">
-            {% for name, url in breadcrumb %}
-                {% if url %}
-                    <li><a href="{{ url }}">{{ name }}</a></li>
-                {% else %}
-                    <li class="active">{{ name }}</li>
-                {% endif %}
-            {% endfor %}
-        </ul>
+<!-- Premium Page Header -->
+<div class="page-header position-relative" style="background: linear-gradient(rgba(8, 17, 25, 0.8), rgba(8, 17, 25, 0.95)), url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat; padding: 180px 0 100px;">
+    <div class="container text-center position-relative z-1">
+        <span class="d-inline-block px-3 py-1 mb-3 rounded-pill text-uppercase" style="background: rgba(210,85,26,0.15); color: var(--dejuc-orange); letter-spacing: 2px; font-size: 0.8rem; font-weight: 700;" data-aos="fade-down">Compétences Globales</span>
+        <h1 class="display-3 font-serif mb-4 text-white" style="font-weight: 300;" data-aos="fade-up" data-aos-delay="100">Nos <span class="fw-bold" style="color: var(--dejuc-orange);">Pôles d'Expertise</span></h1>
+        
+        <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
+            <ol class="breadcrumb justify-content-center mb-0">
+                {% for name, url in breadcrumb %}
+                    {% if url %}
+                        <li class="breadcrumb-item"><a href="{{ url }}" class="text-white-50 text-decoration-none">{{ name }}</a></li>
+                    {% else %}
+                        <li class="breadcrumb-item active text-white" aria-current="page">{{ name }}</li>
+                    {% endif %}
+                {% endfor %}
+            </ol>
+        </nav>
     </div>
 </div>
 
-<section class="section bg-light">
+<section class="section py-5 my-4 bg-gray">
     <div class="container">
-        <div class="row text-center mb-5" data-aos="fade-up">
+        <div class="row text-center mb-5 pb-3" data-aos="fade-up">
             <div class="col-lg-8 mx-auto">
                 <span class="section-subtitle">Solutions Complètes</span>
-                <h2 class="section-title">Comment nous vous accompagnons</h2>
-                <p class="text-muted mt-3">Découvrez en détail nos 6 pôles d'expertise conçus pour couvrir l'ensemble de vos besoins juridiques et stratégiques.</p>
+                <h2 class="section-title font-serif">Comment nous vous accompagnons</h2>
+                <p class="text-muted mt-3 lh-lg" style="font-size: 1.1rem;">Découvrez en détail nos 6 pôles d'expertise conçus pour couvrir l'ensemble de vos besoins juridiques et stratégiques en Afrique francophone.</p>
             </div>
         </div>
 
-        <div class="row g-4">
+        <div class="row g-4 justify-content-center">
             {% for service in services %}
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ forloop.counter|add:1 }}00">
                     <div class="service-card" data-color="{{ service.color }}">
@@ -43,18 +47,18 @@
                             {% else %}<i class="fas fa-check-circle"></i>{% endif %}
                         </div>
                         <h3 class="service-title font-heading">{{ service.title }}</h3>
-                        <p class="service-desc">{{ service.short_description }}</p>
+                        <p class="service-desc lh-lg text-muted">{{ service.short_description }}</p>
                         
-                        <hr class="border-secondary opacity-25 my-4">
+                        <hr class="border-secondary opacity-10 my-4">
                         
-                        <ul class="list-unstyled mb-4 text-muted small">
+                        <ul class="list-unstyled mb-4 text-muted small" style="line-height: 1.8;">
                             {% for feature in service.features|slice:":3" %}
-                                <li class="mb-2"><i class="fas fa-check text-secondary me-2"></i> {{ feature }}</li>
+                                <li class="mb-2"><i class="fas fa-check text-dejuc-orange me-2"></i> {{ feature }}</li>
                             {% endfor %}
                         </ul>
                         
-                        <a href="{% url 'service_detail' service.slug %}" class="service-link">
-                            Découvrir ce pôle <i class="fas fa-arrow-right"></i>
+                        <a href="{% url 'service_detail' service.slug %}" class="service-link fw-bold text-uppercase" style="letter-spacing: 1px; font-size: 0.8rem;">
+                            Découvrir ce pôle <i class="fas fa-arrow-right ms-1"></i>
                         </a>
                     </div>
                 </div>
@@ -64,11 +68,11 @@
 </section>
 
 <!-- Call to action pour les services -->
-<section class="maxims-section text-white text-center">
-    <div class="container" style="position: relative; z-index: 2;">
-        <h2 class="font-serif mb-4" data-aos="fade-up" style="font-size: 2.5rem; letter-spacing: 1px;">Un besoin spécifique ?</h2>
-        <p class="lead mb-5 fs-5 lh-lg opacity-75" data-aos="fade-up" data-aos-delay="100">Nos experts évaluent votre situation lors d'une première consultation confidentielle.</p>
-        <a href="{% url 'contact' %}" class="btn btn-premium" data-aos="fade-up" data-aos-delay="200">Demander une consultation</a>
+<section class="maxims-section text-white text-center py-5">
+    <div class="container py-5" style="position: relative; z-index: 2;">
+        <h2 class="font-serif mb-4" data-aos="fade-up" style="font-size: 3rem; letter-spacing: 1px; font-weight: 300;">Un besoin <span class="fw-bold" style="color: var(--dejuc-orange);">spécifique ?</span></h2>
+        <p class="lead mb-5 lh-lg opacity-75 mx-auto" data-aos="fade-up" data-aos-delay="100" style="max-width: 600px; font-size: 1.1rem;">Nos experts évaluent votre situation lors d'une première consultation strictement confidentielle.</p>
+        <a href="{% url 'contact' %}" class="btn btn-premium rounded-pill px-5 py-3 text-uppercase fw-bold" style="letter-spacing: 1px;" data-aos="fade-up" data-aos-delay="200">Demander une consultation <i class="fas fa-arrow-right ms-2"></i></a>
     </div>
 </section>
 {% endblock %}

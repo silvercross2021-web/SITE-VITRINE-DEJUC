@@ -2,10 +2,12 @@
 {% load static %}
 
 {% block content %}
-<!-- Page Header -->
-<div class="page-header gradient-dejuc-{{ service.color|default:'blue' }}">
-    <div class="container text-center">
-        <div class="mb-4" style="font-size: 4rem; opacity: 0.8;" data-aos="fade-down">
+<!-- Premium Page Header -->
+<div class="page-header position-relative gradient-dejuc-{{ service.color|default:'blue' }}" style="padding: 180px 0 100px; background-image: url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=1920&q=80'); background-blend-mode: overlay; background-size: cover; background-position: center;">
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(to bottom, rgba(8,17,25,0.9), rgba(8,17,25,0.98)); z-index: 0;"></div>
+    
+    <div class="container text-center position-relative z-1">
+        <div class="mb-4 d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 80px; height: 80px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); font-size: 2.5rem; color: var(--dejuc-orange);" data-aos="fade-down">
             {% if service.icon == 'scale' %}<i class="fas fa-balance-scale"></i>
             {% elif service.icon == 'shield-check' %}<i class="fas fa-shield-alt"></i>
             {% elif service.icon == 'file-text' %}<i class="fas fa-file-contract"></i>
@@ -14,74 +16,91 @@
             {% elif service.icon == 'graduation-cap' %}<i class="fas fa-graduation-cap"></i>
             {% else %}<i class="fas fa-check-circle"></i>{% endif %}
         </div>
-        <h1 class="display-4 font-serif mb-2" data-aos="fade-up">{{ service.title }}</h1>
-        <ul class="breadcrumb-custom" data-aos="fade-up" data-aos-delay="100">
-            {% for name, url in breadcrumb %}
-                {% if url %}
-                    <li><a href="{{ url }}">{{ name }}</a></li>
-                {% else %}
-                    <li class="active">{{ name }}</li>
-                {% endif %}
-            {% endfor %}
-        </ul>
+        <h1 class="display-3 font-serif mb-4 text-white" style="font-weight: 300;" data-aos="fade-up" data-aos-delay="100">{{ service.title }}</h1>
+        
+        <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
+            <ol class="breadcrumb justify-content-center mb-0">
+                {% for name, url in breadcrumb %}
+                    {% if url %}
+                        <li class="breadcrumb-item"><a href="{{ url }}" class="text-white-50 text-decoration-none">{{ name }}</a></li>
+                    {% else %}
+                        <li class="breadcrumb-item active text-white" aria-current="page">{{ name }}</li>
+                    {% endif %}
+                {% endfor %}
+            </ol>
+        </nav>
     </div>
 </div>
 
-<section class="section pb-0">
+<section class="section py-5 my-4">
     <div class="container">
-        <div class="row">
+        <div class="row gx-5">
+            <!-- Main Content -->
             <div class="col-lg-8" data-aos="fade-right">
-                <span class="section-subtitle">Aperçu du Service</span>
-                <h2 class="section-title mb-4">Notre Approche</h2>
+                <span class="d-inline-block px-3 py-1 mb-3 rounded-pill text-uppercase" style="background: rgba(210,85,26,0.1); color: var(--dejuc-orange); letter-spacing: 2px; font-size: 0.75rem; font-weight: 700;">Aperçu du Service</span>
+                <h2 class="section-title mb-4 font-serif" style="font-size: 2.5rem;">Notre Approche</h2>
                 
                 {% if service.image_url %}
-                <div class="mb-4 rounded overflow-hidden shadow-md">
-                    <img src="{{ service.image_url }}" alt="{{ service.title }}" class="img-fluid w-100" style="max-height: 400px; object-fit: cover;">
+                <div class="mb-5 img-premium-wrapper">
+                    <img src="{{ service.image_url }}" alt="{{ service.title }}" class="img-fluid w-100" style="max-height: 450px; object-fit: cover;">
                 </div>
                 {% endif %}
 
-                <div class="lead text-dark mb-4 fw-bold">{{ service.short_description }}</div>
-                <div class="text-muted mb-5 fs-5 lh-lg">
+                <div class="lead text-dark mb-4 fw-bold" style="font-size: 1.25rem;">{{ service.short_description }}</div>
+                <div class="text-muted mb-5 lh-lg" style="font-size: 1.1rem;">
                     {{ service.full_description|linebreaks }}
                 </div>
                 
-                <h3 class="font-heading mb-4 mt-5">Ce qui est inclus</h3>
+                <!-- Features Included -->
+                <h3 class="font-serif mb-4 mt-5 pb-2" style="font-size: 2rem; border-bottom: 2px solid rgba(0,0,0,0.05);">Ce qui est inclus</h3>
                 <div class="row g-4 mb-5">
                     {% for feature in service.features %}
                         <div class="col-md-6">
-                            <div class="d-flex p-3 bg-gray rounded h-100 border-start border-4 border-dejuc-{{ service.color|default:'orange' }}">
-                                <i class="fas fa-check-circle text-{{ service.color|default:'primary' }} me-3 mt-1 fs-5"></i>
-                                <span class="fw-medium">{{ feature }}</span>
+                            <div class="d-flex p-4 rounded-3 h-100" style="background: rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.04); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                                <div class="me-3" style="color: var(--dejuc-orange);">
+                                    <i class="fas fa-check-circle fs-4"></i>
+                                </div>
+                                <span class="fw-medium text-dark">{{ feature }}</span>
                             </div>
                         </div>
                     {% endfor %}
                 </div>
 
+                <!-- Process Steps -->
                 {% if service.steps %}
-                <h3 class="font-heading mb-4 mt-5">Notre Processus</h3>
-                <div class="timeline mt-4 mb-5" style="margin-left: 0; padding-left: 20px;">
+                <h3 class="font-serif mb-5 mt-5 pb-2" style="font-size: 2rem; border-bottom: 2px solid rgba(0,0,0,0.05);">Notre Processus</h3>
+                <div class="premium-timeline mb-5">
                     {% for step in service.steps %}
-                    <div class="position-relative mb-4 pb-2 border-dejuc-{{ service.color|default:'blue' }}" style="padding-left: 30px; border-left: 2px solid;">
-                        <div class="position-absolute border-dejuc-{{ service.color|default:'blue' }}" style="left: -11px; top: 0; width: 20px; height: 20px; border-radius: 50%; background: white; border: 4px solid;"></div>
-                        <h4 class="h5 font-heading mb-2">Étape {{ forloop.counter }} : {{ step.title }}</h4>
-                        <p class="text-muted mb-0">{{ step.description }}</p>
+                    <div class="premium-timeline-item" style="justify-content: flex-start; margin-bottom: 40px;">
+                        <!-- Custom left-aligned premium timeline specifically for details page -->
+                        <div style="position: absolute; left: 15px; top: 0; bottom: -40px; width: 2px; background: rgba(0,0,0,0.05); z-index: 1;"></div>
+                        
+                        <div class="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold shadow-sm" style="width: 32px; height: 32px; background: var(--dejuc-orange); z-index: 2; position: relative;">
+                            {{ forloop.counter }}
+                        </div>
+                        
+                        <div class="ms-4 p-4 rounded-4 w-100" style="background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.02);">
+                            <h4 class="h5 font-heading mb-2 text-dark">{{ step.title }}</h4>
+                            <p class="text-muted mb-0 lh-lg">{{ step.description }}</p>
+                        </div>
                     </div>
                     {% endfor %}
                 </div>
                 {% endif %}
 
+                <!-- FAQs -->
                 {% if service.faqs %}
-                <h3 class="font-heading mb-4 mt-5">Questions Fréquentes</h3>
+                <h3 class="font-serif mb-4 mt-5 pb-2" style="font-size: 2rem; border-bottom: 2px solid rgba(0,0,0,0.05);">Questions Fréquentes</h3>
                 <div class="accordion mb-5" id="faqAccordion">
                     {% for faq in service.faqs %}
-                    <div class="accordion-item border-0 mb-3 shadow-sm rounded overflow-hidden">
+                    <div class="accordion-item border-0 mb-3 rounded-4 overflow-hidden" style="box-shadow: 0 5px 20px rgba(0,0,0,0.02);">
                         <h2 class="accordion-header" id="heading{{ forloop.counter }}">
-                            <button class="accordion-button collapsed font-heading bg-gray text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="false" aria-controls="collapse{{ forloop.counter }}">
+                            <button class="accordion-button collapsed fw-bold text-dark py-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="false" aria-controls="collapse{{ forloop.counter }}" style="background: rgba(0,0,0,0.01);">
                                 {{ faq.question }}
                             </button>
                         </h2>
                         <div id="collapse{{ forloop.counter }}" class="accordion-collapse collapse" aria-labelledby="heading{{ forloop.counter }}" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body text-muted">
+                            <div class="accordion-body text-muted lh-lg bg-white">
                                 {{ faq.answer }}
                             </div>
                         </div>
@@ -91,38 +110,39 @@
                 {% endif %}
             </div>
             
-            <!-- Sidebar -->
-            <div class="col-lg-4" data-aos="fade-left">
-                <!-- Consultation Widget -->
-                <div class="card border-0 shadow-lg mb-5 sticky-top" style="top: 100px; border-radius: 16px; overflow: hidden;">
-                    <div class="card-header p-4" style="background: linear-gradient(135deg, var(--dejuc-blue-dark) 0%, var(--dejuc-blue) 100%);">
-                        <h4 class="font-heading mb-0 text-white" style="letter-spacing: 1px;">Besoin de ce service ?</h4>
+            <!-- Premium Sidebar -->
+            <div class="col-lg-4" data-aos="fade-left" data-aos-delay="200">
+                <div class="card border-0 shadow-lg mb-5 sticky-top" style="top: 120px; border-radius: 20px; overflow: hidden;">
+                    <div class="card-header p-4 position-relative" style="background: #081119; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <!-- Decorative glow -->
+                        <div class="position-absolute" style="top: -20px; right: -20px; width: 100px; height: 100px; background: radial-gradient(circle, var(--dejuc-orange) 0%, transparent 70%); opacity: 0.15;"></div>
+                        <h4 class="font-heading mb-0 text-white" style="letter-spacing: 1px; position: relative; z-index: 2;">Besoin de ce service ?</h4>
                     </div>
-                    <div class="card-body p-4" style="background-color: var(--dejuc-blue-dark);">
-                        <p class="text-white-50 small mb-4">Laissez-nous un message pour une prise en charge rapide par le pôle <strong class="text-white">{{ service.title }}</strong>.</p>
+                    <div class="card-body p-4" style="background-color: #0c1824;">
+                        <p class="text-white-50 small mb-4 lh-lg">Laissez-nous un message pour une prise en charge rapide par le pôle <strong class="text-white">{{ service.title }}</strong>.</p>
                         
                         <form action="{% url 'contact' %}" method="post" class="form-premium">
                             {% csrf_token %}
-                            <input type="hidden" name="service" value="{{ service.slug|slice:':10' }}"> <!-- Simple map based on slug prefix -->
+                            <input type="hidden" name="service" value="{{ service.slug|slice:':10' }}">
                             
                             <div class="mb-3">
-                                <input type="text" name="first_name" class="form-control" placeholder="Prénom" required>
+                                <input type="text" name="first_name" class="form-control bg-transparent text-white border-secondary" placeholder="Prénom" style="border-radius: 8px;" required>
                                 <input type="hidden" name="last_name" value="-">
                             </div>
                             <div class="mb-3">
-                                <input type="tel" name="phone" class="form-control" placeholder="Téléphone" required>
+                                <input type="tel" name="phone" class="form-control bg-transparent text-white border-secondary" placeholder="Téléphone" style="border-radius: 8px;" required>
                                 <input type="hidden" name="email" value="contact@service.ci">
                             </div>
-                            <div class="mb-3">
-                                <textarea name="message" class="form-control" rows="3" placeholder="Votre situation..." required></textarea>
+                            <div class="mb-4">
+                                <textarea name="message" class="form-control bg-transparent text-white border-secondary" rows="4" placeholder="Votre situation en quelques mots..." style="border-radius: 8px;" required></textarea>
                             </div>
                             <div class="form-check mb-4">
-                                <input class="form-check-input" type="checkbox" name="gdpr_consent" value="True" id="serv-gdpr" required checked>
-                                <label class="form-check-label text-white-50 small" for="serv-gdpr" style="font-size: 0.8rem; font-weight: 300;">
-                                    J'accepte d'être recontacté(e)
+                                <input class="form-check-input border-secondary" type="checkbox" name="gdpr_consent" value="True" id="serv-gdpr" required checked style="background-color: transparent;">
+                                <label class="form-check-label text-white-50 small" for="serv-gdpr" style="font-size: 0.8rem; font-weight: 300; line-height: 1.5;">
+                                    J'accepte d'être recontacté(e) et que mes données soient traitées.
                                 </label>
                             </div>
-                            <button type="submit" class="btn btn-premium w-100">Envoyer ma demande</button>
+                            <button type="submit" class="btn btn-premium w-100 rounded-pill text-uppercase fw-bold" style="letter-spacing: 1px;">Envoyer ma demande</button>
                         </form>
                     </div>
                 </div>
@@ -132,15 +152,19 @@
 </section>
 
 <!-- Related Services -->
-<section class="section bg-light">
-    <div class="container">
-        <h3 class="font-heading text-center mb-5">Pôles Complémentaires</h3>
-        <div class="row justify-content-center">
+<section class="section bg-light py-5">
+    <div class="container py-4">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <span class="d-inline-block px-3 py-1 mb-2 rounded-pill text-uppercase" style="background: rgba(210,85,26,0.1); color: var(--dejuc-orange); letter-spacing: 2px; font-size: 0.75rem; font-weight: 700;">Découvrez aussi</span>
+            <h3 class="font-serif" style="font-size: 2.5rem;">Pôles Complémentaires</h3>
+        </div>
+        
+        <div class="row justify-content-center g-4">
             {% for other_service in other_services %}
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100 border-0 shadow-sm hover-shadow transition">
-                        <div class="card-body text-center p-4">
-                            <div class="mb-3 fs-1 text-dejuc-{{ other_service.color|default:'blue' }}">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter }}00">
+                    <div class="card h-100 border-0 rounded-4 overflow-hidden shadow-sm" style="transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 35px rgba(0,0,0,0.05)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.03)'">
+                        <div class="card-body text-center p-5">
+                            <div class="mb-4 d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 60px; height: 60px; background: rgba(0,0,0,0.03); font-size: 1.5rem; color: var(--dejuc-orange);">
                                 {% if other_service.icon == 'scale' %}<i class="fas fa-balance-scale"></i>
                                 {% elif other_service.icon == 'shield-check' %}<i class="fas fa-shield-alt"></i>
                                 {% elif other_service.icon == 'file-text' %}<i class="fas fa-file-contract"></i>
@@ -149,8 +173,8 @@
                                 {% elif other_service.icon == 'graduation-cap' %}<i class="fas fa-graduation-cap"></i>
                                 {% else %}<i class="fas fa-check-circle"></i>{% endif %}
                             </div>
-                            <h4 class="h5 font-heading">{{ other_service.title }}</h4>
-                            <a href="{% url 'service_detail' other_service.slug %}" class="stretched-link text-muted small mt-2 d-inline-block">Voir le pôle <i class="fas fa-arrow-right ms-1"></i></a>
+                            <h4 class="h5 font-heading mb-3">{{ other_service.title }}</h4>
+                            <a href="{% url 'service_detail' other_service.slug %}" class="stretched-link text-uppercase fw-bold text-decoration-none" style="font-size: 0.8rem; letter-spacing: 1px; color: var(--dejuc-orange);">Voir le pôle <i class="fas fa-arrow-right ms-1"></i></a>
                         </div>
                     </div>
                 </div>
