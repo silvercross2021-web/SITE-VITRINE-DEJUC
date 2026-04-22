@@ -1,13 +1,13 @@
 {% load static %}
 <footer class="site-footer" style="background: #081119; color: rgba(255,255,255,0.6); font-size: 0.8rem; padding: 40px 0 15px;">
     <div class="container">
-        <div class="row g-4 mb-4">
+        <div class="row justify-content-between g-4 mb-4">
             <!-- Brand Column -->
             <div class="col-lg-3 col-md-6 text-center text-md-start">
                 <div class="bg-white d-inline-block px-2 py-1 rounded mb-3">
                     <img src="{% static 'images/logo.jpg' %}" alt="DEJUC Logo" style="height: 30px; object-fit: contain;">
                 </div>
-                <p class="mb-3" style="font-size: 0.75rem; line-height: 1.5; color: rgba(255,255,255,0.5);">
+                <p class="mb-3" style="font-size: 0.75rem; line-height: 1.6; color: rgba(255,255,255,0.5);">
                     Cabinet d'expertise juridique et stratégique. Médiation, arbitrage, et investissement foncier en Afrique Francophone.
                 </p>
                 <div class="d-flex justify-content-center justify-content-md-start gap-2">
@@ -42,7 +42,7 @@
             </div>
 
             <!-- Contacts -->
-            <div class="col-lg-4 col-md-6 text-center text-md-start">
+            <div class="col-lg-3 col-md-6 text-center text-md-start">
                 <h5 class="text-white text-uppercase mb-3" style="font-size: 0.8rem; letter-spacing: 1px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px; display: inline-block;">Siège & Contacts</h5>
                 
                 <div class="d-flex align-items-start justify-content-center justify-content-md-start mb-2">
@@ -67,12 +67,21 @@
             </div>
         </div>
 
-        <!-- Copyright -->
+        <!-- Copyright & Signature -->
         <div class="row border-top border-secondary border-opacity-25 pt-3 align-items-center">
-            <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
+            <div class="col-lg-4 text-center text-lg-start mb-2 mb-lg-0">
                 <span style="font-size: 0.7rem; color: rgba(255,255,255,0.4);">&copy; {% now "Y" %} DAK EXPERT JURIST CONSULTING (DEJUC).</span>
             </div>
-            <div class="col-md-6 text-center text-md-end">
+            
+            <!-- Signature Voilée -->
+            <div class="col-lg-4 text-center mb-2 mb-lg-0">
+                <span style="font-size: 0.7rem; color: rgba(255,255,255,0.15); transition: color 0.3s; cursor: default;" onmouseover="this.style.color='rgba(255,255,255,0.4)'" onmouseout="this.style.color='rgba(255,255,255,0.15)'">
+                    Designed with <i class="fas fa-bolt mx-1" style="color: #d2551a;"></i> by 
+                    <span style="font-weight: 600; letter-spacing: 2px;">SILVERCROSS</span>
+                </span>
+            </div>
+
+            <div class="col-lg-4 text-center text-lg-end">
                 <span style="font-size: 0.7rem; color: rgba(255,255,255,0.4);">RCCM: CI-ABJ-03-2025-B13-00592 &nbsp;|&nbsp; N° CC: 2500941D</span>
             </div>
         </div>
