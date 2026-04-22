@@ -112,46 +112,45 @@
                 {% endif %}
             </div>
             
-            <!-- Premium Sidebar (Form - Awwwards Gradient) -->
+            <!-- Premium Sidebar (Form - Awwwards Pure Light Premium) -->
             <div class="col-lg-5" data-aos="fade-left" data-aos-delay="200">
                 <div class="sticky-top" style="top: 120px;">
-                    <div class="position-relative overflow-hidden" style="background: linear-gradient(135deg, var(--dejuc-blue-dark) 0%, var(--dejuc-blue) 100%); border-radius: 24px; padding: 50px 40px; box-shadow: 0 25px 50px rgba(0,0,0,0.15);">
-                        <!-- Decorative Glow -->
-                        <div class="position-absolute" style="top: -60px; right: -60px; width: 250px; height: 250px; background: radial-gradient(circle, rgba(210,85,26,0.4) 0%, transparent 70%); border-radius: 50%; z-index: 0; pointer-events: none;"></div>
+                    <div class="bg-white position-relative overflow-hidden" style="border-radius: 24px; padding: 50px 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.02);">
                         
                         <div class="position-relative z-1">
-                            <h3 class="text-white font-serif mb-2" style="font-size: 2.2rem; font-weight: 300;">Démarrer</h3>
-                            <p class="text-white-50 mb-5 lh-lg" style="font-size: 0.95rem; font-weight: 300;">Discutez avec nos experts du pôle <strong class="text-white" style="font-weight: 500;">{{ service.title }}</strong>.</p>
+                            <span class="d-inline-block px-3 py-1 mb-3 rounded-pill text-uppercase" style="background: rgba(210,85,26,0.1); color: var(--dejuc-orange); letter-spacing: 2px; font-size: 0.75rem; font-weight: 700;">Démarrer</span>
+                            <h3 class="font-serif mb-2 text-dark" style="font-size: 2rem; font-weight: 600;">Contactez-nous</h3>
+                            <p class="text-muted mb-5 lh-lg" style="font-size: 0.95rem;">Discutez avec nos experts du pôle <strong>{{ service.title }}</strong>.</p>
                             
                             <form action="{% url 'contact' %}" method="post" class="needs-validation">
                                 {% csrf_token %}
                                 <input type="hidden" name="service" value="{{ service.slug|slice:':10' }}">
                                 
                                 <div class="mb-4">
-                                    <label class="text-white-50 small text-uppercase mb-2 fw-bold" style="letter-spacing: 1px;">Votre Nom Complet</label>
-                                    <input type="text" name="first_name" class="form-control bg-transparent text-white border-secondary shadow-none p-3" placeholder="Jean Dupont" required style="border-radius: 12px; font-size: 1rem;">
+                                    <label class="text-dark small text-uppercase mb-2 fw-bold" style="letter-spacing: 1px;">Votre Nom Complet</label>
+                                    <input type="text" name="first_name" class="form-control shadow-none p-3 border-0" placeholder="Jean Dupont" required style="background: #f4f6f8; border-radius: 12px; font-size: 1rem; color: #333;">
                                     <input type="hidden" name="last_name" value="-">
                                 </div>
                                 
                                 <div class="mb-4">
-                                    <label class="text-white-50 small text-uppercase mb-2 fw-bold" style="letter-spacing: 1px;">Numéro de Téléphone</label>
-                                    <input type="tel" name="phone" class="form-control bg-transparent text-white border-secondary shadow-none p-3" placeholder="+225 00 00 00 00" required style="border-radius: 12px; font-size: 1rem;">
+                                    <label class="text-dark small text-uppercase mb-2 fw-bold" style="letter-spacing: 1px;">Numéro de Téléphone</label>
+                                    <input type="tel" name="phone" class="form-control shadow-none p-3 border-0" placeholder="+225 00 00 00 00" required style="background: #f4f6f8; border-radius: 12px; font-size: 1rem; color: #333;">
                                     <input type="hidden" name="email" value="contact@service.ci">
                                 </div>
                                 
                                 <div class="mb-4">
-                                    <label class="text-white-50 small text-uppercase mb-2 fw-bold" style="letter-spacing: 1px;">Décrivez votre besoin</label>
-                                    <textarea name="message" class="form-control bg-transparent text-white border-secondary shadow-none p-3" rows="3" placeholder="Expliquez-nous brièvement..." required style="border-radius: 12px; font-size: 1rem;"></textarea>
+                                    <label class="text-dark small text-uppercase mb-2 fw-bold" style="letter-spacing: 1px;">Décrivez votre besoin</label>
+                                    <textarea name="message" class="form-control shadow-none p-3 border-0" rows="3" placeholder="Expliquez-nous brièvement..." required style="background: #f4f6f8; border-radius: 12px; font-size: 1rem; color: #333;"></textarea>
                                 </div>
                                 
-                                <div class="form-check mb-5">
-                                    <input class="form-check-input mt-1" type="checkbox" name="gdpr_consent" value="True" id="serv-gdpr" required checked style="background-color: transparent; border-color: rgba(255,255,255,0.4);">
-                                    <label class="form-check-label text-white-50" for="serv-gdpr" style="font-size: 0.75rem; font-weight: 300; line-height: 1.6; padding-top: 1px;">
+                                <div class="form-check mb-4 p-3 rounded" style="background: rgba(210,85,26,0.03); border: 1px solid rgba(210,85,26,0.1);">
+                                    <input class="form-check-input ms-1 mt-1" type="checkbox" name="gdpr_consent" value="True" id="serv-gdpr" required checked>
+                                    <label class="form-check-label text-muted small ms-2" for="serv-gdpr" style="line-height: 1.5;">
                                         J'accepte que mes informations soient traitées pour être recontacté(e).
                                     </label>
                                 </div>
                                 
-                                <button type="submit" class="btn btn-premium w-100 py-3 rounded-pill text-uppercase d-flex align-items-center justify-content-center px-4" style="letter-spacing: 2px; font-size: 0.8rem; font-weight: 700; transition: all 0.3s ease;">
+                                <button type="submit" class="btn btn-premium w-100 py-3 rounded-pill text-uppercase d-flex align-items-center justify-content-center px-4 mt-2 shadow-md" style="letter-spacing: 2px; font-size: 0.8rem; font-weight: 700; transition: all 0.3s ease;">
                                     <span>Envoyer ma demande</span>
                                     <i class="fas fa-arrow-right ms-2"></i>
                                 </button>
