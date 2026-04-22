@@ -288,7 +288,7 @@
                                     </div>
                                     <p class="testimonial-content">"{{ testimonial.content }}"</p>
                                     <div class="testimonial-author">
-                                        <div class="testimonial-avatar" style="background-color: var(--dejuc-{{ testimonial.color }});">
+                                        <div class="testimonial-avatar bg-dejuc-{{ testimonial.color|default:'blue' }}">
                                             {{ testimonial.initials }}
                                         </div>
                                         <div class="testimonial-info">
