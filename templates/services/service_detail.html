@@ -40,8 +40,8 @@
                 </div>
                 {% endif %}
 
-                <div class="lead text-dark mb-4">{{ service.short_description }}</div>
-                <div class="text-muted mb-5 lh-lg">
+                <div class="lead text-dark mb-4 fw-bold">{{ service.short_description }}</div>
+                <div class="text-muted mb-5 fs-5 lh-lg">
                     {{ service.full_description|linebreaks }}
                 </div>
                 
@@ -94,35 +94,35 @@
             <!-- Sidebar -->
             <div class="col-lg-4" data-aos="fade-left">
                 <!-- Consultation Widget -->
-                <div class="card border-0 shadow-lg mb-5 sticky-top" style="top: 100px;">
-                    <div class="card-header bg-dark-blue text-white p-4">
-                        <h4 class="font-heading mb-0 text-white">Besoin de ce service ?</h4>
+                <div class="card border-0 shadow-lg mb-5 sticky-top" style="top: 100px; border-radius: 16px; overflow: hidden;">
+                    <div class="card-header p-4" style="background: linear-gradient(135deg, var(--dejuc-blue-dark) 0%, var(--dejuc-blue) 100%);">
+                        <h4 class="font-heading mb-0 text-white" style="letter-spacing: 1px;">Besoin de ce service ?</h4>
                     </div>
-                    <div class="card-body p-4 bg-gray">
-                        <p class="text-muted small mb-4">Laissez-nous un message pour une prise en charge rapide par le pôle <strong>{{ service.title }}</strong>.</p>
+                    <div class="card-body p-4" style="background-color: var(--dejuc-blue-dark);">
+                        <p class="text-white-50 small mb-4">Laissez-nous un message pour une prise en charge rapide par le pôle <strong class="text-white">{{ service.title }}</strong>.</p>
                         
-                        <form action="{% url 'contact' %}" method="post">
+                        <form action="{% url 'contact' %}" method="post" class="form-premium">
                             {% csrf_token %}
                             <input type="hidden" name="service" value="{{ service.slug|slice:':10' }}"> <!-- Simple map based on slug prefix -->
                             
                             <div class="mb-3">
-                                <input type="text" name="first_name" class="form-control dejuc-input bg-white" placeholder="Prénom" required>
+                                <input type="text" name="first_name" class="form-control" placeholder="Prénom" required>
                                 <input type="hidden" name="last_name" value="-">
                             </div>
                             <div class="mb-3">
-                                <input type="tel" name="phone" class="form-control dejuc-input bg-white" placeholder="Téléphone" required>
+                                <input type="tel" name="phone" class="form-control" placeholder="Téléphone" required>
                                 <input type="hidden" name="email" value="contact@service.ci">
                             </div>
                             <div class="mb-3">
-                                <textarea name="message" class="form-control dejuc-input bg-white" rows="3" placeholder="Votre situation..." required></textarea>
+                                <textarea name="message" class="form-control" rows="3" placeholder="Votre situation..." required></textarea>
                             </div>
                             <div class="form-check mb-4">
                                 <input class="form-check-input" type="checkbox" name="gdpr_consent" value="True" id="serv-gdpr" required checked>
-                                <label class="form-check-label text-muted small" for="serv-gdpr" style="font-size: 0.75rem;">
+                                <label class="form-check-label text-white-50 small" for="serv-gdpr" style="font-size: 0.8rem; font-weight: 300;">
                                     J'accepte d'être recontacté(e)
                                 </label>
                             </div>
-                            <button type="submit" class="btn-dejuc btn-primary w-100">Envoyer ma demande</button>
+                            <button type="submit" class="btn btn-premium w-100">Envoyer ma demande</button>
                         </form>
                     </div>
                 </div>

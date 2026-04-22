@@ -1283,3 +1283,53 @@ img {
 .gradient-dejuc-orange { background: linear-gradient(135deg, var(--dejuc-blue-dark) 0%, var(--dejuc-orange) 100%) !important; }
 .gradient-dejuc-teal { background: linear-gradient(135deg, var(--dejuc-blue-dark) 0%, var(--dejuc-turquoise) 100%) !important; }
 
+
+/* Ultra Premium Forms */
+.form-premium .form-control {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white !important;
+  border-radius: 8px;
+  padding: 15px 20px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+.form-premium .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 300;
+}
+.form-premium .form-control:focus {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: var(--dejuc-orange);
+  box-shadow: 0 0 15px rgba(210, 85, 26, 0.3);
+  outline: none;
+}
+.form-premium select.form-control option {
+  background-color: var(--dejuc-blue-dark);
+  color: white;
+}
+.btn-premium {
+  background: linear-gradient(135deg, var(--dejuc-orange) 0%, #ff7b30 100%);
+  color: white !important;
+  border: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 15px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(210, 85, 26, 0.4);
+  transition: all 0.3s ease;
+}
+.btn-premium:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(210, 85, 26, 0.6);
+}
+.glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
