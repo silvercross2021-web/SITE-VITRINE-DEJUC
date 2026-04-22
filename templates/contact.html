@@ -70,6 +70,75 @@
 
             <!-- Contact Form - Ultra Premium Dark Blue Glass -->
             <div class="col-lg-7" data-aos="fade-left" data-aos-delay="200">
+                <style>
+                    /* Bypassing browser cache with inline styles for the new design */
+                    .premium-glass-form-card {
+                        background: linear-gradient(145deg, #0a3d5e, #062a42) !important;
+                        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                        border-radius: 24px !important;
+                        padding: 50px !important;
+                        box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3), inset 0 2px 20px rgba(255, 255, 255, 0.05) !important;
+                        position: relative !important;
+                        overflow: hidden !important;
+                    }
+                    .premium-glass-form-card::before {
+                        content: "";
+                        position: absolute;
+                        top: -50%;
+                        left: -50%;
+                        width: 200%;
+                        height: 200%;
+                        background: radial-gradient(circle at top right, rgba(27, 150, 200, 0.25) 0%, transparent 40%),
+                                    radial-gradient(circle at bottom left, rgba(210, 85, 26, 0.2) 0%, transparent 40%);
+                        pointer-events: none;
+                        z-index: 0;
+                    }
+                    .premium-glass-form-card .z-1 {
+                        position: relative;
+                        z-index: 1;
+                    }
+                    .premium-glass-form-card h3 { color: #ffffff !important; }
+                    .premium-glass-form-card p { color: rgba(255, 255, 255, 0.8) !important; }
+                    
+                    .glass-input-group label {
+                        color: rgba(255, 255, 255, 0.9) !important;
+                        font-size: 0.75rem !important;
+                        text-transform: uppercase !important;
+                        letter-spacing: 1px !important;
+                        font-weight: 700 !important;
+                        margin-bottom: 8px !important;
+                        display: block !important;
+                    }
+                    .glass-input-group .form-control, .glass-input-group .form-select {
+                        background: rgba(0, 0, 0, 0.25) !important;
+                        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+                        border-radius: 12px !important;
+                        padding: 14px 16px 14px 45px !important;
+                        font-size: 0.95rem !important;
+                        color: #fff !important;
+                        transition: all 0.3s ease !important;
+                    }
+                    .glass-input-group textarea.form-control { padding-top: 16px !important; }
+                    .glass-input-group .form-control::placeholder { color: rgba(255, 255, 255, 0.4) !important; }
+                    .glass-input-group .form-control:focus, .glass-input-group .form-select:focus {
+                        background: rgba(0, 0, 0, 0.4) !important;
+                        border-color: var(--dejuc-orange) !important;
+                        box-shadow: 0 0 0 4px rgba(210, 85, 26, 0.2) !important;
+                        color: #fff !important;
+                    }
+                    .glass-input-group .icon-wrapper {
+                        position: absolute !important;
+                        left: 16px !important;
+                        top: 42px !important;
+                        color: rgba(255, 255, 255, 0.6) !important;
+                        z-index: 5 !important;
+                        transition: all 0.3s ease !important;
+                    }
+                    .glass-input-group .form-control:focus ~ .icon-wrapper,
+                    .glass-input-group .form-select:focus ~ .icon-wrapper {
+                        color: var(--dejuc-orange) !important;
+                    }
+                </style>
                 <div class="premium-glass-form-card">
                     <div class="z-1">
                         <span class="d-inline-block px-3 py-1 mb-3 rounded-pill text-uppercase" style="background: rgba(210,85,26,0.2); color: var(--dejuc-orange); letter-spacing: 2px; font-size: 0.75rem; font-weight: 700;">Démarrer un Projet</span>
