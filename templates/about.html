@@ -2,95 +2,113 @@
 {% load static %}
 
 {% block content %}
-<!-- Page Header -->
-<div class="page-header" style="background: linear-gradient(rgba(17, 34, 51, 0.85), rgba(17, 34, 51, 0.85)), url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;">
-    <div class="container text-center">
-        <h1 class="display-4 font-serif mb-2" data-aos="fade-up">Notre Histoire</h1>
-        <ul class="breadcrumb-custom" data-aos="fade-up" data-aos-delay="100">
-            {% for name, url in breadcrumb %}
-                {% if url %}
-                    <li><a href="{{ url }}">{{ name }}</a></li>
-                {% else %}
-                    <li class="active">{{ name }}</li>
-                {% endif %}
-            {% endfor %}
-        </ul>
+<!-- Premium Page Header -->
+<div class="page-header position-relative" style="background: linear-gradient(rgba(8, 17, 25, 0.8), rgba(8, 17, 25, 0.95)), url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat; padding: 180px 0 100px;">
+    <div class="container text-center position-relative z-1">
+        <span class="d-inline-block px-3 py-1 mb-3 rounded-pill text-uppercase" style="background: rgba(210,85,26,0.15); color: var(--dejuc-orange); letter-spacing: 2px; font-size: 0.8rem; font-weight: 700;" data-aos="fade-down">Cabinet d'Expertise</span>
+        <h1 class="display-3 font-serif mb-4 text-white" style="font-weight: 300;" data-aos="fade-up" data-aos-delay="100">Notre <span class="fw-bold" style="color: var(--dejuc-orange);">Histoire</span></h1>
+        
+        <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
+            <ol class="breadcrumb justify-content-center mb-0">
+                {% for name, url in breadcrumb %}
+                    {% if url %}
+                        <li class="breadcrumb-item"><a href="{{ url }}" class="text-white-50 text-decoration-none">{{ name }}</a></li>
+                    {% else %}
+                        <li class="breadcrumb-item active text-white" aria-current="page">{{ name }}</li>
+                    {% endif %}
+                {% endfor %}
+            </ol>
+        </nav>
     </div>
 </div>
 
 <!-- Intro Section -->
-<section class="section">
+<section class="section py-5 my-5">
     <div class="container">
-        <div class="row align-items-center">
+        <div class="row align-items-center gx-5">
             <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
                 <span class="section-subtitle">DEJUC International</span>
-                <h2 class="section-title mb-4 font-serif">L'excellence juridique au service de vos ambitions</h2>
-                <p class="lead text-dark mb-4 fw-bold">Un cabinet spécialisé, ancré en Côte d'Ivoire avec une vision continentale.</p>
-                <p class="text-muted mb-4 fs-5 lh-lg">
+                <h2 class="section-title mb-4 font-serif" style="font-size: 2.5rem; line-height: 1.2;">L'excellence juridique au service de vos ambitions.</h2>
+                <p class="lead text-dark mb-4" style="font-weight: 600;">Un cabinet spécialisé, ancré en Côte d'Ivoire avec une vision continentale.</p>
+                <p class="text-muted mb-4 lh-lg" style="font-size: 1.1rem;">
                     DEJUC (Dak Expert Jurist Consulting) est né d'un constat simple : les investisseurs et entrepreneurs en Afrique francophone ont besoin d'un partenaire juridique qui allie rigueur académique, connaissance du terrain et rapidité d'exécution.
                 </p>
-                <p class="text-muted mb-4 fs-5 lh-lg">
+                <p class="text-muted mb-5 lh-lg" style="font-size: 1.1rem;">
                     Notre cabinet se distingue par son approche préventive des risques (audit, conseil) et sa maîtrise des modes alternatifs de règlement des litiges (médiation, arbitrage), permettant ainsi d'éviter les procédures judiciaires longues et coûteuses.
                 </p>
-                <div class="d-flex align-items-center mt-5 p-3 rounded glass-card-light" style="background: rgba(27,150,200,0.05); border: 1px solid rgba(27,150,200,0.1);">
-                    <img src="{% static 'images/logo.jpg' %}" alt="Logo DEJUC" style="height: 60px; margin-right: 20px; object-fit: contain;">
+                
+                <div class="d-inline-flex align-items-center p-3 rounded glass-card-light" style="background: rgba(210,85,26,0.05); border: 1px solid rgba(210,85,26,0.1);">
+                    <div class="bg-white p-2 rounded shadow-sm me-3">
+                        <img src="{% static 'images/logo.jpg' %}" alt="Logo DEJUC" style="height: 40px; object-fit: contain;">
+                    </div>
                     <div>
-                        <h5 class="mb-0 font-heading text-dejuc-blue">Cabinet Agréé</h5>
+                        <h6 class="mb-0 font-heading text-dark text-uppercase" style="letter-spacing: 1px; font-size: 0.9rem;">Cabinet Agréé</h6>
                         <p class="text-muted small mb-0 fw-bold">RCCM: CI-ABJ-03-2025-B13-00592</p>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6" data-aos="fade-left">
+            <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
                 <div class="position-relative">
-                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="Bureaux professionnels" class="img-fluid rounded shadow-lg" style="border: 10px solid white;">
+                    <div class="img-premium-wrapper">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=80" alt="Bureaux professionnels" class="img-fluid w-100">
+                    </div>
                     <!-- Decorative Element -->
-                    <div class="position-absolute top-0 end-0 translate-middle" style="width: 100px; height: 100px; background: radial-gradient(circle, var(--dejuc-orange) 0%, transparent 70%); opacity: 0.5; z-index: -1;"></div>
+                    <div class="position-absolute" style="bottom: -30px; left: -30px; width: 120px; height: 120px; border: 10px solid var(--dejuc-orange); opacity: 0.2; z-index: -1;"></div>
+                    <div class="position-absolute" style="top: -20px; right: -20px; width: 100px; height: 100px; background: radial-gradient(circle, var(--dejuc-orange) 0%, transparent 70%); opacity: 0.3; z-index: -1;"></div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Timeline / History -->
-<section class="section bg-gray">
-    <div class="container">
-        <div class="row text-center mb-5" data-aos="fade-up">
+<!-- Premium Timeline / History -->
+<section class="section py-5 bg-gray">
+    <div class="container py-4">
+        <div class="row text-center mb-5 pb-3" data-aos="fade-up">
             <div class="col-lg-8 mx-auto">
                 <span class="section-subtitle">Notre Parcours</span>
-                <h2 class="section-title">Les dates clés</h2>
+                <h2 class="section-title font-serif">Les dates clés</h2>
             </div>
         </div>
         
-        <div class="timeline">
-            <div class="timeline-item left" data-aos="fade-right">
-                <div class="timeline-content">
-                    <div class="timeline-date">14 Novembre 2024</div>
-                    <h4 class="font-heading">Création du Cabinet</h4>
-                    <p class="text-muted mb-0">Début des activités de conseil et d'accompagnement juridique à Abidjan.</p>
+        <div class="premium-timeline">
+            <!-- Item 1 -->
+            <div class="premium-timeline-item" data-aos="fade-up">
+                <div class="premium-timeline-marker"></div>
+                <div class="premium-timeline-content">
+                    <span class="premium-timeline-date">14 Novembre 2024</span>
+                    <h4 class="font-heading mb-3">Création du Cabinet</h4>
+                    <p class="text-muted mb-0" style="line-height: 1.7;">Début des activités de conseil et d'accompagnement juridique à Abidjan, avec la vision de transformer l'accès à l'expertise légale.</p>
                 </div>
             </div>
             
-            <div class="timeline-item right" data-aos="fade-left">
-                <div class="timeline-content">
-                    <div class="timeline-date">20 Janvier 2025</div>
-                    <h4 class="font-heading">Agrément Officiel</h4>
-                    <p class="text-muted mb-0">Obtention du RCCM et structuration complète sous la forme de SARL U.</p>
+            <!-- Item 2 -->
+            <div class="premium-timeline-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="premium-timeline-marker"></div>
+                <div class="premium-timeline-content">
+                    <span class="premium-timeline-date">20 Janvier 2025</span>
+                    <h4 class="font-heading mb-3">Agrément Officiel</h4>
+                    <p class="text-muted mb-0" style="line-height: 1.7;">Obtention du RCCM et structuration complète sous la forme de SARL U, consolidant ainsi notre statut institutionnel.</p>
                 </div>
             </div>
             
-            <div class="timeline-item left" data-aos="fade-right">
-                <div class="timeline-content">
-                    <div class="timeline-date">Février 2025</div>
-                    <h4 class="font-heading">Expansion des Bureaux</h4>
-                    <p class="text-muted mb-0">Ouverture des annexes de la Riviera Palmeraie et d'Abatta pour être plus proche de nos clients.</p>
+            <!-- Item 3 -->
+            <div class="premium-timeline-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="premium-timeline-marker"></div>
+                <div class="premium-timeline-content">
+                    <span class="premium-timeline-date">Février 2025</span>
+                    <h4 class="font-heading mb-3">Expansion des Bureaux</h4>
+                    <p class="text-muted mb-0" style="line-height: 1.7;">Ouverture des annexes stratégiques à la Riviera Palmeraie et d'Abatta pour renforcer notre proximité avec notre clientèle.</p>
                 </div>
             </div>
             
-            <div class="timeline-item right" data-aos="fade-left">
-                <div class="timeline-content">
-                    <div class="timeline-date">Aujourd'hui</div>
-                    <h4 class="font-heading">Rayonnement Continental</h4>
-                    <p class="text-muted mb-0">Intervention reconnue en Côte d'Ivoire et accompagnement d'investisseurs à travers l'Afrique francophone.</p>
+            <!-- Item 4 -->
+            <div class="premium-timeline-item" data-aos="fade-up" data-aos-delay="300">
+                <div class="premium-timeline-marker"></div>
+                <div class="premium-timeline-content">
+                    <span class="premium-timeline-date text-white" style="background: var(--dejuc-orange);">Aujourd'hui</span>
+                    <h4 class="font-heading mb-3 text-dark">Rayonnement Continental</h4>
+                    <p class="text-muted mb-0" style="line-height: 1.7;">Intervention reconnue en Côte d'Ivoire et accompagnement d'investisseurs et sociétés à travers l'Afrique francophone.</p>
                 </div>
             </div>
         </div>
@@ -98,51 +116,58 @@
 </section>
 
 <!-- Founder Section -->
-<section class="section">
+<section class="section py-5 my-5">
     <div class="container">
-        <div class="row align-items-center">
+        <div class="row align-items-center gx-5">
             <div class="col-lg-5 order-lg-2 mb-5 mb-lg-0" data-aos="fade-left">
                 <div class="position-relative">
-                    <!-- Placeholder pour la photo de M. Gnabro -->
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" alt="M. Dakouri Gnabro" class="img-fluid rounded shadow-lg">
-                    <div class="position-absolute bottom-0 start-0 bg-white p-3 shadow-lg rounded m-3">
-                        <div class="text-center">
-                            <i class="fas fa-balance-scale fs-3 text-secondary mb-2"></i>
-                            <h6 class="font-heading mb-0">Arbitre Agréé</h6>
+                    <div class="img-premium-wrapper">
+                        <!-- Placeholder pour la photo de M. Gnabro -->
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1000&q=80" alt="M. Dakouri Gnabro" class="img-fluid w-100">
+                    </div>
+                    
+                    <!-- Floating Glass Badge -->
+                    <div class="position-absolute bottom-0 start-0 glass-badge p-4 rounded m-n3 ms-n4 shadow-lg d-flex align-items-center" style="transform: translateY(20px);">
+                        <div class="bg-dark rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                            <i class="fas fa-balance-scale fs-5 text-white"></i>
+                        </div>
+                        <div>
+                            <h6 class="font-heading mb-1 fw-bold text-dark text-uppercase" style="letter-spacing: 1px;">Arbitre Agréé</h6>
+                            <span class="small text-muted fw-semibold">Expertise Reconnue</span>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="col-lg-6 offset-lg-1 order-lg-1" data-aos="fade-right">
+            <div class="col-lg-6 offset-lg-1 order-lg-1" data-aos="fade-right" data-aos-delay="200">
                 <span class="section-subtitle">Le Fondateur</span>
-                <h2 class="section-title mb-3 font-serif">M. Dakouri Gnabro</h2>
-                <h5 class="text-dejuc-orange mb-4 font-heading text-uppercase" style="letter-spacing: 1px;">Arbitre & Médiateur Professionnel Agréé</h5>
+                <h2 class="section-title mb-3 font-serif" style="font-size: 2.8rem;">M. Dakouri Gnabro</h2>
+                <h5 class="text-dejuc-orange mb-4 font-heading text-uppercase fw-bold" style="letter-spacing: 2px; font-size: 0.9rem;">Arbitre & Médiateur Professionnel Agréé</h5>
                 
-                <p class="text-muted mb-4 fs-5 lh-lg">
+                <p class="text-muted mb-4 lh-lg" style="font-size: 1.1rem;">
                     Expert juridique de haut niveau, M. Dakouri Gnabro allie une <strong class="text-dark">rigueur institutionnelle</strong> à une connaissance profonde des réalités sociologiques et économiques africaines.
                 </p>
-                <p class="text-muted mb-4 fs-5 lh-lg">
+                <p class="text-muted mb-4 lh-lg" style="font-size: 1.1rem;">
                     Fort de son expérience en résolution de conflits complexes (fonciers, commerciaux, familiaux), il a fondé DEJUC International Group avec la conviction que la prévention et la médiation sont les clés de la sécurité des affaires en Afrique.
                 </p>
                 
-                <ul class="list-unstyled mt-5 mb-5">
-                    <li class="mb-3 d-flex align-items-center p-3 rounded" style="background: white; box-shadow: 0 2px 15px rgba(0,0,0,0.03);">
-                        <i class="fas fa-check-circle text-dejuc-blue me-3 fs-4"></i>
-                        <span class="fw-bold">Spécialiste en Droit OHADA et ingénierie sociétaire</span>
-                    </li>
-                    <li class="mb-3 d-flex align-items-center p-3 rounded" style="background: white; box-shadow: 0 2px 15px rgba(0,0,0,0.03);">
-                        <i class="fas fa-check-circle text-dejuc-blue me-3 fs-4"></i>
-                        <span class="fw-bold">Expert en audit et sécurisation de titres fonciers</span>
-                    </li>
-                    <li class="mb-3 d-flex align-items-center p-3 rounded" style="background: white; box-shadow: 0 2px 15px rgba(0,0,0,0.03);">
-                        <i class="fas fa-check-circle text-dejuc-blue me-3 fs-4"></i>
-                        <span class="fw-bold">Médiateur certifié pour les litiges civils et commerciaux</span>
-                    </li>
-                </ul>
+                <div class="mt-5 mb-5 ps-3" style="border-left: 3px solid rgba(210,85,26,0.2);">
+                    <div class="mb-4 d-flex align-items-center">
+                        <i class="fas fa-check-circle text-dejuc-orange me-3 fs-5"></i>
+                        <span class="text-dark" style="font-weight: 500;">Spécialiste en Droit OHADA et ingénierie sociétaire</span>
+                    </div>
+                    <div class="mb-4 d-flex align-items-center">
+                        <i class="fas fa-check-circle text-dejuc-orange me-3 fs-5"></i>
+                        <span class="text-dark" style="font-weight: 500;">Expert en audit et sécurisation de titres fonciers</span>
+                    </div>
+                    <div class="mb-0 d-flex align-items-center">
+                        <i class="fas fa-check-circle text-dejuc-orange me-3 fs-5"></i>
+                        <span class="text-dark" style="font-weight: 500;">Médiateur certifié pour les litiges civils et commerciaux</span>
+                    </div>
+                </div>
                 
-                <a href="https://linkedin.com" target="_blank" class="btn btn-premium mt-2">
-                    <i class="fab fa-linkedin me-2"></i> Profil LinkedIn
+                <a href="https://linkedin.com" target="_blank" class="btn btn-premium rounded-pill px-4 py-2">
+                    <i class="fab fa-linkedin me-2"></i> Voir le Profil LinkedIn
                 </a>
             </div>
         </div>

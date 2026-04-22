@@ -1623,3 +1623,98 @@ img {
 }
 
 
+
+/* PREMIUM TIMELINE */
+.premium-timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+.premium-timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: rgba(0,0,0,0.05);
+  transform: translateX(-50%);
+}
+.premium-timeline-item {
+  position: relative;
+  margin-bottom: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.premium-timeline-item:nth-child(even) {
+  flex-direction: row-reverse;
+}
+.premium-timeline-marker {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background: var(--dejuc-orange);
+  border: 4px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(210,85,26,0.1);
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+.premium-timeline-item:hover .premium-timeline-marker {
+  transform: translateX(-50%) scale(1.3);
+  box-shadow: 0 0 15px rgba(210,85,26,0.4);
+}
+.premium-timeline-content {
+  width: 45%;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s;
+  border: 1px solid rgba(0,0,0,0.02);
+}
+.premium-timeline-item:hover .premium-timeline-content {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+}
+.premium-timeline-date {
+  display: inline-block;
+  padding: 5px 15px;
+  background: rgba(210,85,26,0.1);
+  color: var(--dejuc-orange);
+  font-weight: 700;
+  font-size: 0.85rem;
+  border-radius: 50px;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+@media (max-width: 768px) {
+  .premium-timeline::before { left: 30px; }
+  .premium-timeline-marker { left: 30px; }
+  .premium-timeline-content { width: calc(100% - 70px); margin-left: 70px !important; }
+  .premium-timeline-item { flex-direction: row !important; justify-content: flex-start; }
+}
+
+/* PREMIUM IMAGE EFFECTS */
+.img-premium-wrapper {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+}
+.img-premium-wrapper img {
+  transition: transform 0.7s ease;
+}
+.img-premium-wrapper:hover img {
+  transform: scale(1.05);
+}
+.glass-badge {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.4);
+}
