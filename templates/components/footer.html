@@ -56,14 +56,23 @@
             
             <!-- Newsletter -->
             <div class="col-lg-3 col-md-6 text-center text-md-start">
+                <style>
+                    .footer-newsletter-input::placeholder {
+                        color: rgba(255, 255, 255, 0.4) !important;
+                    }
+                    .footer-newsletter-input:focus {
+                        border-bottom-color: var(--dejuc-orange) !important;
+                        box-shadow: none !important;
+                    }
+                </style>
                 <h5 class="text-white text-uppercase mb-3" style="font-size: 0.8rem; letter-spacing: 1px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px; display: inline-block;">Veille Juridique</h5>
                 <p class="mb-3" style="font-size: 0.75rem; line-height: 1.6; color: rgba(255,255,255,0.5);">
                     Abonnez-vous pour recevoir nos dernières analyses et opportunités.
                 </p>
                 <form id="footer-newsletter-form" class="mt-2">
                     <div class="position-relative">
-                        <input type="email" class="form-control bg-transparent shadow-none" placeholder="Votre adresse email..." required style="border: none; border-bottom: 1px solid rgba(255,255,255,0.2); border-radius: 0; padding: 10px 40px 10px 0; color: #fff; font-size: 0.8rem;">
-                        <button type="submit" class="btn p-0 border-0 position-absolute" style="right: 0; top: 50%; transform: translateY(-50%); color: var(--dejuc-orange);">
+                        <input type="email" class="form-control footer-newsletter-input bg-transparent shadow-none" placeholder="Votre adresse email..." required style="border: none; border-bottom: 1px solid rgba(255,255,255,0.2); border-radius: 0; padding: 10px 40px 10px 0; color: #fff; font-size: 0.8rem; transition: border-color 0.3s ease;">
+                        <button type="submit" class="btn p-0 border-0 position-absolute" style="right: 0; top: 50%; transform: translateY(-50%); color: var(--dejuc-orange); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-50%) translateX(3px)'" onmouseout="this.style.transform='translateY(-50%)'">
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     </div>
