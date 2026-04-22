@@ -1,14 +1,17 @@
 {% load static %}
 <footer class="site-footer">
     <div class="container">
-        <div class="row">
+        <div class="row gx-5">
             <!-- Brand Column -->
-            <div class="col-lg-4 col-md-6 footer-widget">
-                <img src="{% static 'images/logo.jpg' %}" alt="DEJUC Logo" class="footer-logo">
-                <p class="footer-text">
-                    Cabinet juridique spécialisé en médiation, arbitrage, investissement foncier et immobilier en Côte d'Ivoire et en Afrique Francophone.
+            <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+                <div class="footer-logo-wrapper">
+                    <img src="{% static 'images/logo.jpg' %}" alt="DEJUC Logo" class="footer-logo">
+                </div>
+                <p class="mb-4 lh-lg" style="color: rgba(255,255,255,0.6);">
+                    Cabinet d'expertise juridique et stratégique.<br>
+                    Nous sécurisons vos investissements et résolvons vos litiges complexes en Afrique Francophone avec une rigueur absolue.
                 </p>
-                <div class="footer-social">
+                <div class="footer-social mt-4">
                     <a href="#" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     <a href="#" class="social-link" title="Facebook"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
@@ -17,37 +20,37 @@
             </div>
 
             <!-- Quick Links -->
-            <div class="col-lg-2 col-md-6 footer-widget">
-                <h4 class="footer-title">Liens Rapides</h4>
-                <ul class="footer-links">
-                    <li><a href="{% url 'home' %}"><i class="fas fa-chevron-right me-2" style="font-size: 0.7em;"></i> Accueil</a></li>
-                    <li><a href="{% url 'about' %}"><i class="fas fa-chevron-right me-2" style="font-size: 0.7em;"></i> À Propos</a></li>
-                    <li><a href="{% url 'services' %}"><i class="fas fa-chevron-right me-2" style="font-size: 0.7em;"></i> Nos Services</a></li>
-                    <li><a href="{% url 'blog' %}"><i class="fas fa-chevron-right me-2" style="font-size: 0.7em;"></i> Blog & Actus</a></li>
-                    <li><a href="{% url 'contact' %}"><i class="fas fa-chevron-right me-2" style="font-size: 0.7em;"></i> Contact</a></li>
+            <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+                <h4 class="footer-title">Navigation</h4>
+                <ul class="footer-links list-unstyled">
+                    <li><a href="{% url 'home' %}">Accueil</a></li>
+                    <li><a href="{% url 'about' %}">Le Cabinet</a></li>
+                    <li><a href="{% url 'services' %}">Nos Expertises</a></li>
+                    <li><a href="{% url 'blog' %}">Actualités</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
                 </ul>
             </div>
 
             <!-- Services -->
-            <div class="col-lg-3 col-md-6 footer-widget">
-                <h4 class="footer-title">Pôles d'Expertise</h4>
-                <ul class="footer-links">
-                    <li><a href="{% url 'service_detail' 'arbitrage-mediation' %}"><i class="fas fa-balance-scale me-2" style="font-size: 0.8em;"></i> Arbitrage & Médiation</a></li>
-                    <li><a href="{% url 'service_detail' 'audit-securite-juridique' %}"><i class="fas fa-shield-alt me-2" style="font-size: 0.8em;"></i> Audit & Sécurité</a></li>
-                    <li><a href="{% url 'service_detail' 'creation-societes-contrats' %}"><i class="fas fa-file-contract me-2" style="font-size: 0.8em;"></i> Création de Sociétés</a></li>
-                    <li><a href="{% url 'service_detail' 'representation-intermediation' %}"><i class="fas fa-handshake me-2" style="font-size: 0.8em;"></i> Représentation</a></li>
-                    <li><a href="{% url 'service_detail' 'contentieux-recouvrement' %}"><i class="fas fa-gavel me-2" style="font-size: 0.8em;"></i> Contentieux</a></li>
+            <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+                <h4 class="footer-title">Expertises</h4>
+                <ul class="footer-links list-unstyled">
+                    <li><a href="{% url 'service_detail' 'arbitrage-mediation' %}">Arbitrage & Médiation</a></li>
+                    <li><a href="{% url 'service_detail' 'audit-securite-juridique' %}">Audit & Sécurité</a></li>
+                    <li><a href="{% url 'service_detail' 'creation-societes-contrats' %}">Création de Sociétés</a></li>
+                    <li><a href="{% url 'service_detail' 'representation-intermediation' %}">Représentation</a></li>
+                    <li><a href="{% url 'service_detail' 'contentieux-recouvrement' %}">Contentieux</a></li>
                 </ul>
             </div>
 
             <!-- Contact -->
-            <div class="col-lg-3 col-md-6 footer-widget">
-                <h4 class="footer-title">Nous Contacter</h4>
+            <div class="col-lg-3 col-md-6">
+                <h4 class="footer-title">Bureaux</h4>
                 
                 <div class="footer-contact-item">
                     <i class="fas fa-map-marker-alt footer-contact-icon"></i>
-                    <div>
-                        <strong>Siège Principal:</strong><br>
+                    <div style="color: rgba(255,255,255,0.6); line-height: 1.6;">
+                        <strong class="text-white">Siège Principal</strong><br>
                         Abidjan, Cocody Angré<br>
                         Lot 104, Ilot 257
                     </div>
@@ -55,16 +58,16 @@
                 
                 <div class="footer-contact-item">
                     <i class="fas fa-phone-alt footer-contact-icon"></i>
-                    <div>
-                        <a href="tel:+2250778488405" class="text-white text-decoration-none">+225 07 78 48 84 05</a><br>
-                        <a href="tel:+2250716339405" class="text-white text-decoration-none">+225 07 16 33 94 05</a>
+                    <div style="line-height: 1.6;">
+                        <a href="tel:+2250778488405" class="text-decoration-none" style="color: rgba(255,255,255,0.6);">+225 07 78 48 84 05</a><br>
+                        <a href="tel:+2250716339405" class="text-decoration-none" style="color: rgba(255,255,255,0.6);">+225 07 16 33 94 05</a>
                     </div>
                 </div>
                 
                 <div class="footer-contact-item">
                     <i class="fas fa-envelope footer-contact-icon"></i>
                     <div>
-                        <a href="mailto:infodejucinternational@gmail.com" class="text-white text-decoration-none" style="word-break: break-all;">
+                        <a href="mailto:infodejucinternational@gmail.com" class="text-decoration-none" style="color: rgba(255,255,255,0.6); word-break: break-all;">
                             infodejucinternational<br>@gmail.com
                         </a>
                     </div>
@@ -73,16 +76,14 @@
         </div>
 
         <!-- Copyright -->
-        <div class="row">
-            <div class="col-12 footer-bottom">
-                <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
-                    <div class="mb-3 mb-md-0">
-                        &copy; {% now "Y" %} DAK EXPERT JURIST CONSULTING INTERNATIONAL GROUP (DEJUC). Tous droits réservés.
-                    </div>
-                    <div>
-                        <span class="badge bg-secondary mb-2 mb-md-0">RCCM: CI-ABJ-03-2025-B13-00592</span>
-                        <span class="badge bg-secondary ms-1">N° CC: 2500941D</span>
-                    </div>
+        <div class="footer-bottom">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <div class="mb-3 mb-md-0" style="color: rgba(255,255,255,0.4);">
+                    &copy; {% now "Y" %} DAK EXPERT JURIST CONSULTING INTERNATIONAL GROUP (DEJUC). Tous droits réservés.
+                </div>
+                <div>
+                    <span class="badge" style="background: rgba(255,255,255,0.1); font-weight: normal; padding: 8px 12px; margin-right: 5px;">RCCM: CI-ABJ-03-2025-B13-00592</span>
+                    <span class="badge" style="background: rgba(255,255,255,0.1); font-weight: normal; padding: 8px 12px;">N° CC: 2500941D</span>
                 </div>
             </div>
         </div>

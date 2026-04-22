@@ -58,44 +58,68 @@
 </section>
 
 <!-- ==============================================
-     FLOATING CONSULTATION BAR (Awwwards Style)
+     PREMIUM CONSULTATION SECTION
      ============================================== -->
-<div class="container position-relative d-none d-lg-block" style="margin-top: -50px; z-index: 10;">
-    <div class="card border-0 hero-glass-panel p-4 shadow-lg" style="background: rgba(20, 30, 48, 0.85); backdrop-filter: blur(25px); border-radius: 16px;">
-        <form action="{% url 'contact' %}" method="post" class="form-minimalist row g-3 align-items-end m-0">
-            {% csrf_token %}
-            <div class="col-md-3">
-                <input type="text" name="first_name" class="form-control" placeholder="Nom complet" required>
-                <input type="hidden" name="last_name" value="-">
-            </div>
-            <div class="col-md-3">
-                <input type="tel" name="phone" class="form-control" placeholder="Téléphone (+225...)" required>
-                <input type="hidden" name="email" value="consultation@rapide.ci">
-                <input type="hidden" name="message" value="Demande de consultation rapide.">
-            </div>
-            <div class="col-md-3">
-                <select name="service" class="form-control">
-                    <option value="">Domaine d'intervention...</option>
-                    <option value="arbitrage">Arbitrage & Médiation</option>
-                    <option value="audit">Investissement Foncier</option>
-                    <option value="creation">Création de Société</option>
-                    <option value="autre">Autre demande</option>
-                </select>
-            </div>
-            <div class="col-md-3">
-                <button type="submit" class="btn btn-premium w-100 rounded-pill">Être Rappelé <i class="fas fa-arrow-right ms-2"></i></button>
-            </div>
-            <div class="col-12 mt-2">
-                <div class="form-check">
-                    <input class="form-check-input bg-transparent border-secondary" type="checkbox" name="gdpr_consent" value="True" id="quick-gdpr" required checked>
-                    <label class="form-check-label text-white-50" for="quick-gdpr" style="font-size: 0.75rem; font-weight: 300;">
-                        J'accepte d'être recontacté(e) pour cette demande.
-                    </label>
+<section class="consultation-section bg-gray">
+    <div class="container">
+        <div class="consultation-card" data-aos="fade-up">
+            <div class="row g-0">
+                <div class="col-lg-5 consultation-info-wrapper">
+                    <h3 class="font-serif mb-4" style="font-size: 2.2rem;">Parlez à un Expert</h3>
+                    <p class="mb-5 fs-5 lh-lg" style="color: rgba(255,255,255,0.8);">Une consultation initiale pour évaluer vos besoins juridiques, auditer vos risques et sécuriser vos opérations en Afrique Francophone.</p>
+                    
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="bg-white rounded-circle d-flex align-items-center justify-content-center me-4" style="width: 50px; height: 50px;">
+                            <i class="fas fa-phone-alt text-dejuc-orange fs-5"></i>
+                        </div>
+                        <div>
+                            <span class="d-block small text-uppercase" style="letter-spacing: 1px; color: rgba(255,255,255,0.6);">Assistance Immédiate</span>
+                            <span class="fs-5 fw-bold">+225 07 78 48 84 05</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 consultation-form-wrapper bg-white">
+                    <h4 class="font-heading mb-4 text-dark">Demander une Consultation Rapide</h4>
+                    <form action="{% url 'contact' %}" method="post" class="form-floating-premium row g-4">
+                        {% csrf_token %}
+                        <div class="col-md-6">
+                            <label class="small text-muted mb-2 fw-bold">Nom complet</label>
+                            <input type="text" name="first_name" class="form-control" placeholder="Jean Dupont" required>
+                            <input type="hidden" name="last_name" value="-">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="small text-muted mb-2 fw-bold">Téléphone</label>
+                            <input type="tel" name="phone" class="form-control" placeholder="+225 00 00 00 00" required>
+                            <input type="hidden" name="email" value="consultation@rapide.ci">
+                            <input type="hidden" name="message" value="Demande de consultation rapide.">
+                        </div>
+                        <div class="col-12">
+                            <label class="small text-muted mb-2 fw-bold">Domaine d'intervention</label>
+                            <select name="service" class="form-control text-dark">
+                                <option value="">Sélectionnez un domaine...</option>
+                                <option value="arbitrage">Arbitrage & Médiation</option>
+                                <option value="audit">Investissement Foncier</option>
+                                <option value="creation">Création de Société</option>
+                                <option value="autre">Autre demande</option>
+                            </select>
+                        </div>
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn btn-premium rounded-pill px-5 py-3 w-100 fs-5">Être Rappelé par un Expert <i class="fas fa-arrow-right ms-2"></i></button>
+                        </div>
+                        <div class="col-12 text-center mt-3">
+                            <div class="form-check d-inline-block text-start">
+                                <input class="form-check-input" type="checkbox" name="gdpr_consent" value="True" id="quick-gdpr" required checked>
+                                <label class="form-check-label text-muted small" for="quick-gdpr">
+                                    J'accepte d'être recontacté(e) pour cette demande. Confidentialité garantie.
+                                </label>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
-</div>
+</section>
 
 <!-- ==============================================
      TICKER / MARQUEE SECTION
