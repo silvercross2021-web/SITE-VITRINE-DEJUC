@@ -36,7 +36,7 @@
     <div class="container">
         <div class="row gx-5">
             <!-- Main Content -->
-            <div class="col-lg-8" data-aos="fade-right">
+            <div class="col-lg-7" data-aos="fade-right">
                 <span class="d-inline-block px-3 py-1 mb-3 rounded-pill text-uppercase" style="background: rgba(210,85,26,0.1); color: var(--dejuc-orange); letter-spacing: 2px; font-size: 0.75rem; font-weight: 700;">Aperçu du Service</span>
                 <h2 class="section-title mb-4 font-serif" style="font-size: 2.5rem;">Notre Approche</h2>
                 
@@ -69,19 +69,21 @@
                 <!-- Process Steps -->
                 {% if service.steps %}
                 <h3 class="font-serif mb-5 mt-5 pb-2" style="font-size: 2rem; border-bottom: 2px solid rgba(0,0,0,0.05);">Notre Processus</h3>
-                <div class="premium-timeline mb-5">
+                <div class="service-process-list position-relative ps-4 mb-5">
+                    <!-- Left Line -->
+                    <div class="position-absolute" style="left: 21px; top: 10px; bottom: 30px; width: 2px; background: rgba(210,85,26,0.2); z-index: 1;"></div>
+                    
                     {% for step in service.steps %}
-                    <div class="premium-timeline-item" style="justify-content: flex-start; margin-bottom: 40px;">
-                        <!-- Custom left-aligned premium timeline specifically for details page -->
-                        <div style="position: absolute; left: 15px; top: 0; bottom: -40px; width: 2px; background: rgba(0,0,0,0.05); z-index: 1;"></div>
-                        
-                        <div class="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold shadow-sm" style="width: 32px; height: 32px; background: var(--dejuc-orange); z-index: 2; position: relative;">
+                    <div class="position-relative mb-5 d-flex" style="z-index: 2;">
+                        <!-- Number Circle -->
+                        <div class="flex-shrink-0 rounded-circle d-flex align-items-center justify-content-center text-white shadow-sm" style="width: 44px; height: 44px; background: var(--dejuc-orange); font-weight: bold; border: 4px solid #fff; position: relative; left: -22px; top: -5px;">
                             {{ forloop.counter }}
                         </div>
                         
-                        <div class="ms-4 p-4 rounded-4 w-100" style="background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.02);">
-                            <h4 class="h5 font-heading mb-2 text-dark">{{ step.title }}</h4>
-                            <p class="text-muted mb-0 lh-lg">{{ step.description }}</p>
+                        <!-- Content -->
+                        <div class="flex-grow-1 ms-1 p-4 rounded-4" style="background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.03); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                            <h4 class="h5 font-heading mb-3 text-dark fw-bold">{{ step.title }}</h4>
+                            <p class="text-muted mb-0 lh-lg" style="font-size: 1rem;">{{ step.description }}</p>
                         </div>
                     </div>
                     {% endfor %}
@@ -95,12 +97,12 @@
                     {% for faq in service.faqs %}
                     <div class="accordion-item border-0 mb-3 rounded-4 overflow-hidden" style="box-shadow: 0 5px 20px rgba(0,0,0,0.02);">
                         <h2 class="accordion-header" id="heading{{ forloop.counter }}">
-                            <button class="accordion-button collapsed fw-bold text-dark py-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="false" aria-controls="collapse{{ forloop.counter }}" style="background: rgba(0,0,0,0.01);">
+                            <button class="accordion-button collapsed fw-bold text-dark py-3 px-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="false" aria-controls="collapse{{ forloop.counter }}" style="background: rgba(0,0,0,0.01);">
                                 {{ faq.question }}
                             </button>
                         </h2>
                         <div id="collapse{{ forloop.counter }}" class="accordion-collapse collapse" aria-labelledby="heading{{ forloop.counter }}" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body text-muted lh-lg bg-white">
+                            <div class="accordion-body text-muted lh-lg bg-white px-4">
                                 {{ faq.answer }}
                             </div>
                         </div>
@@ -110,39 +112,55 @@
                 {% endif %}
             </div>
             
-            <!-- Premium Sidebar -->
-            <div class="col-lg-4" data-aos="fade-left" data-aos-delay="200">
-                <div class="card border-0 shadow-lg mb-5 sticky-top" style="top: 120px; border-radius: 20px; overflow: hidden;">
-                    <div class="card-header p-4 position-relative" style="background: #081119; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                        <!-- Decorative glow -->
-                        <div class="position-absolute" style="top: -20px; right: -20px; width: 100px; height: 100px; background: radial-gradient(circle, var(--dejuc-orange) 0%, transparent 70%); opacity: 0.15;"></div>
-                        <h4 class="font-heading mb-0 text-white" style="letter-spacing: 1px; position: relative; z-index: 2;">Besoin de ce service ?</h4>
+            <!-- Premium Sidebar (Form) -->
+            <div class="col-lg-5" data-aos="fade-left" data-aos-delay="200">
+                <div class="card border-0 shadow-lg mb-5 sticky-top" style="top: 120px; border-radius: 20px; overflow: hidden; background: #fff;">
+                    <div class="card-header p-5 position-relative text-center border-0" style="background: rgba(210,85,26,0.05);">
+                        <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3 shadow-sm" style="width: 60px; height: 60px; background: #fff; color: var(--dejuc-orange); font-size: 1.5rem;">
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
+                        <h4 class="font-serif mb-2 text-dark" style="font-size: 1.8rem; font-weight: 600;">Confiez-nous ce projet</h4>
+                        <p class="text-muted small mb-0 lh-lg px-2">Remplissez ce formulaire et un expert du pôle <strong>{{ service.title }}</strong> vous recontactera rapidement.</p>
                     </div>
-                    <div class="card-body p-4" style="background-color: #0c1824;">
-                        <p class="text-white-50 small mb-4 lh-lg">Laissez-nous un message pour une prise en charge rapide par le pôle <strong class="text-white">{{ service.title }}</strong>.</p>
-                        
-                        <form action="{% url 'contact' %}" method="post" class="form-premium">
+                    
+                    <div class="card-body p-5 pt-4">
+                        <form action="{% url 'contact' %}" method="post" class="needs-validation">
                             {% csrf_token %}
                             <input type="hidden" name="service" value="{{ service.slug|slice:':10' }}">
                             
-                            <div class="mb-3">
-                                <input type="text" name="first_name" class="form-control bg-transparent text-white border-secondary" placeholder="Prénom" style="border-radius: 8px;" required>
+                            <div class="mb-4">
+                                <label class="form-label text-dark fw-bold small text-uppercase" style="letter-spacing: 1px;">Votre Nom / Prénom</label>
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-text bg-light border-0" style="border-radius: 12px 0 0 12px;"><i class="fas fa-user text-muted"></i></span>
+                                    <input type="text" name="first_name" class="form-control bg-light border-0 shadow-none fs-6" placeholder="Jean Dupont" style="border-radius: 0 12px 12px 0;" required>
+                                </div>
                                 <input type="hidden" name="last_name" value="-">
                             </div>
-                            <div class="mb-3">
-                                <input type="tel" name="phone" class="form-control bg-transparent text-white border-secondary" placeholder="Téléphone" style="border-radius: 8px;" required>
+                            
+                            <div class="mb-4">
+                                <label class="form-label text-dark fw-bold small text-uppercase" style="letter-spacing: 1px;">Votre Téléphone</label>
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-text bg-light border-0" style="border-radius: 12px 0 0 12px;"><i class="fas fa-phone text-muted"></i></span>
+                                    <input type="tel" name="phone" class="form-control bg-light border-0 shadow-none fs-6" placeholder="+225 01 02 03 04 05" style="border-radius: 0 12px 12px 0;" required>
+                                </div>
                                 <input type="hidden" name="email" value="contact@service.ci">
                             </div>
+                            
                             <div class="mb-4">
-                                <textarea name="message" class="form-control bg-transparent text-white border-secondary" rows="4" placeholder="Votre situation en quelques mots..." style="border-radius: 8px;" required></textarea>
+                                <label class="form-label text-dark fw-bold small text-uppercase" style="letter-spacing: 1px;">Votre Situation</label>
+                                <textarea name="message" class="form-control bg-light border-0 shadow-none p-3 fs-6" rows="4" placeholder="Expliquez-nous brièvement votre besoin..." style="border-radius: 12px;" required></textarea>
                             </div>
-                            <div class="form-check mb-4">
-                                <input class="form-check-input border-secondary" type="checkbox" name="gdpr_consent" value="True" id="serv-gdpr" required checked style="background-color: transparent;">
-                                <label class="form-check-label text-white-50 small" for="serv-gdpr" style="font-size: 0.8rem; font-weight: 300; line-height: 1.5;">
-                                    J'accepte d'être recontacté(e) et que mes données soient traitées.
+                            
+                            <div class="form-check mb-4 p-3 rounded" style="background: rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.03);">
+                                <input class="form-check-input ms-1" type="checkbox" name="gdpr_consent" value="True" id="serv-gdpr" required checked>
+                                <label class="form-check-label text-muted small ms-2 lh-lg" for="serv-gdpr">
+                                    J'accepte que mes informations soient traitées pour être recontacté(e).
                                 </label>
                             </div>
-                            <button type="submit" class="btn btn-premium w-100 rounded-pill text-uppercase fw-bold" style="letter-spacing: 1px;">Envoyer ma demande</button>
+                            
+                            <button type="submit" class="btn btn-premium w-100 py-3 rounded-pill text-uppercase fw-bold shadow-md" style="letter-spacing: 1px; font-size: 0.95rem;">
+                                Envoyer la demande <i class="fas fa-arrow-right ms-2"></i>
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -152,7 +170,7 @@
 </section>
 
 <!-- Related Services -->
-<section class="section bg-light py-5">
+<section class="section bg-gray py-5">
     <div class="container py-4">
         <div class="text-center mb-5" data-aos="fade-up">
             <span class="d-inline-block px-3 py-1 mb-2 rounded-pill text-uppercase" style="background: rgba(210,85,26,0.1); color: var(--dejuc-orange); letter-spacing: 2px; font-size: 0.75rem; font-weight: 700;">Découvrez aussi</span>
@@ -164,7 +182,7 @@
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter }}00">
                     <div class="card h-100 border-0 rounded-4 overflow-hidden shadow-sm" style="transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 35px rgba(0,0,0,0.05)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.03)'">
                         <div class="card-body text-center p-5">
-                            <div class="mb-4 d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 60px; height: 60px; background: rgba(0,0,0,0.03); font-size: 1.5rem; color: var(--dejuc-orange);">
+                            <div class="mb-4 d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 60px; height: 60px; background: rgba(210,85,26,0.05); font-size: 1.5rem; color: var(--dejuc-orange);">
                                 {% if other_service.icon == 'scale' %}<i class="fas fa-balance-scale"></i>
                                 {% elif other_service.icon == 'shield-check' %}<i class="fas fa-shield-alt"></i>
                                 {% elif other_service.icon == 'file-text' %}<i class="fas fa-file-contract"></i>
