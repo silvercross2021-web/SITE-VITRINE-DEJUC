@@ -255,25 +255,28 @@ img {
 
 /* Navbar */
 .navbar {
-  transition: all 0.3s ease;
-  padding: 15px 0;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  padding: 20px 0;
   z-index: 1030;
+  background-color: transparent;
 }
 
-.navbar.sticky-top {
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  box-shadow: var(--shadow-sm);
+.navbar-scrolled {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
   padding: 10px 0;
 }
 
 .navbar-brand img {
-  height: 50px;
-  transition: height 0.3s ease;
+  height: 55px;
+  transition: height 0.4s ease;
+  object-fit: contain;
 }
 
-.navbar.sticky-top .navbar-brand img {
-  height: 40px;
+.navbar-scrolled .navbar-brand img {
+  height: 45px;
 }
 
 .nav-link {
@@ -281,10 +284,11 @@ img {
   font-weight: 600;
   color: var(--text-dark) !important;
   text-transform: uppercase;
-  font-size: 0.9rem;
-  letter-spacing: 0.5px;
-  padding: 0.5rem 1rem !important;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  padding: 0.5rem 1.2rem !important;
   position: relative;
+  transition: color 0.3s ease;
 }
 
 .nav-link::after {
@@ -295,25 +299,66 @@ img {
   transform: translateX(-50%);
   width: 0;
   height: 2px;
-  background-color: var(--dejuc-blue);
+  background-color: var(--dejuc-orange);
   transition: width 0.3s ease;
+  border-radius: 2px;
 }
 
 .nav-link:hover::after,
 .nav-item.active .nav-link::after {
-  width: 80%;
+  width: 50%;
 }
 
 .navbar-dark .nav-link {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.navbar-dark .nav-link:hover,
+.navbar-dark .nav-item.active .nav-link {
   color: white !important;
 }
 
-.navbar-dark .nav-link::after {
-  background-color: var(--dejuc-orange);
+.navbar-scrolled .nav-link {
+  color: var(--text-dark) !important;
 }
 
-.navbar-dark.sticky-top .nav-link {
-  color: var(--text-dark) !important;
+.navbar-scrolled .nav-link:hover {
+  color: var(--dejuc-orange) !important;
+}
+
+.navbar-scrolled .nav-item.active .nav-link {
+  color: var(--dejuc-blue) !important;
+}
+
+/* Mobile Menu Fixes */
+@media (max-width: 991px) {
+  .navbar-collapse {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    margin-top: 15px;
+  }
+  
+  .navbar:not(.navbar-scrolled) .nav-link {
+    color: var(--text-dark) !important; /* Force dark text in mobile dropdown even if top */
+  }
+  
+  .navbar-collapse .btn-dejuc {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+
+/* Navbar toggler modern */
+.navbar-toggler {
+  border: none;
+  padding: 0;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+  outline: none;
 }
 
 /* Hero Section */

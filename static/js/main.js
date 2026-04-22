@@ -30,16 +30,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function checkScroll() {
         if (window.scrollY > 50) {
-            navbar.classList.add('sticky-top');
+            navbar.classList.add('navbar-scrolled');
             navbar.classList.remove('navbar-dark');
             navbar.classList.add('navbar-light');
         } else {
-            navbar.classList.remove('sticky-top');
-            // If on homepage (has hero), revert to dark for transparency
-            if (document.querySelector('.hero')) {
-                navbar.classList.remove('navbar-light');
-                navbar.classList.add('navbar-dark');
-            }
+            navbar.classList.remove('navbar-scrolled');
+            navbar.classList.remove('navbar-light');
+            navbar.classList.add('navbar-dark');
         }
     }
     
