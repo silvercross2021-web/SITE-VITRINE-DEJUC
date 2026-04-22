@@ -286,48 +286,60 @@ img {
   text-transform: uppercase;
   font-size: 0.85rem;
   letter-spacing: 1px;
-  padding: 0.5rem 1.2rem !important;
+  padding: 0.6rem 1.2rem !important;
   position: relative;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  opacity: 0.9;
 }
 
 .nav-link::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: 2px;
   left: 50%;
   transform: translateX(-50%);
   width: 0;
   height: 2px;
   background-color: var(--dejuc-orange);
-  transition: width 0.3s ease;
+  transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   border-radius: 2px;
+}
+
+.nav-link:hover {
+  opacity: 1;
 }
 
 .nav-link:hover::after,
 .nav-item.active .nav-link::after {
-  width: 50%;
+  width: 60%;
 }
 
+/* Dark Navbar (Transparent at top) */
 .navbar-dark .nav-link {
-  color: rgba(255, 255, 255, 0.9) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
 }
 
-.navbar-dark .nav-link:hover,
-.navbar-dark .nav-item.active .nav-link {
+.navbar-dark .nav-link:hover {
   color: white !important;
 }
 
+.navbar-dark .nav-item.active .nav-link {
+  color: var(--dejuc-orange) !important;
+  opacity: 1;
+}
+
+/* Scrolled Navbar (White background) */
 .navbar-scrolled .nav-link {
   color: var(--text-dark) !important;
 }
 
 .navbar-scrolled .nav-link:hover {
-  color: var(--dejuc-orange) !important;
+  color: var(--dejuc-blue) !important;
 }
 
 .navbar-scrolled .nav-item.active .nav-link {
-  color: var(--dejuc-blue) !important;
+  color: var(--dejuc-orange) !important;
+  opacity: 1;
 }
 
 /* Mobile Menu Fixes */
