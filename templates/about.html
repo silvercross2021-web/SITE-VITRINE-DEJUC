@@ -52,9 +52,9 @@
                     <div class="img-premium-wrapper">
                         <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=80" alt="Bureaux professionnels" class="img-fluid w-100">
                     </div>
-                    <!-- Decorative Element -->
-                    <div class="position-absolute" style="bottom: -30px; left: -30px; width: 120px; height: 120px; border: 10px solid var(--dejuc-orange); opacity: 0.2; z-index: -1;"></div>
-                    <div class="position-absolute" style="top: -20px; right: -20px; width: 100px; height: 100px; background: radial-gradient(circle, var(--dejuc-orange) 0%, transparent 70%); opacity: 0.3; z-index: -1;"></div>
+                    <!-- Decorative Element (hidden on mobile to prevent horizontal overflow) -->
+                    <div class="position-absolute d-none d-md-block" style="bottom: -30px; left: -30px; width: 120px; height: 120px; border: 10px solid var(--dejuc-orange); opacity: 0.2; z-index: -1;"></div>
+                    <div class="position-absolute d-none d-md-block" style="top: -20px; right: -20px; width: 100px; height: 100px; background: radial-gradient(circle, var(--dejuc-orange) 0%, transparent 70%); opacity: 0.3; z-index: -1;"></div>
                 </div>
             </div>
         </div>
@@ -127,8 +127,8 @@
                     </div>
                     
                     <!-- Floating Glass Badge -->
-                    <div class="position-absolute bottom-0 start-0 glass-badge p-4 rounded m-n3 ms-n4 shadow-lg d-flex align-items-center" style="transform: translateY(20px);">
-                        <div class="bg-dark rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                    <div class="position-absolute bottom-0 start-0 glass-badge p-3 p-md-4 rounded m-0 m-md-n3 ms-0 ms-md-n4 shadow-lg d-flex align-items-center w-100 w-md-auto" style="transform: translateY(20px); max-width: 90%; left: 5% !important;">
+                        <div class="bg-dark rounded-circle d-flex align-items-center justify-content-center me-3 flex-shrink-0" style="width: 50px; height: 50px;">
                             <i class="fas fa-balance-scale fs-5 text-white"></i>
                         </div>
                         <div>
