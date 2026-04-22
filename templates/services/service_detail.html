@@ -112,47 +112,46 @@
                 {% endif %}
             </div>
             
-            <!-- Premium Sidebar (Form - Ultra Modern Premium) -->
+            <!-- Premium Sidebar (Form - Ultra Premium Dark Blue Glass) -->
             <div class="col-lg-5" data-aos="fade-left" data-aos-delay="200">
                 <div class="sticky-top" style="top: 120px;">
-                    <div class="bg-white position-relative overflow-hidden" style="border-radius: 24px; padding: 50px 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.05), 0 0 0 1px rgba(0,0,0,0.02);">
-                        
-                        <div class="position-relative z-1">
-                            <span class="d-inline-block px-3 py-1 mb-3 rounded-pill text-uppercase" style="background: rgba(210,85,26,0.1); color: var(--dejuc-orange); letter-spacing: 2px; font-size: 0.75rem; font-weight: 700;">Démarrer</span>
-                            <h3 class="font-serif mb-2 text-dark" style="font-size: 2rem; font-weight: 600;">Contactez-nous</h3>
-                            <p class="text-muted mb-5 lh-lg" style="font-size: 0.95rem;">Discutez avec nos experts du pôle <strong>{{ service.title }}</strong>.</p>
+                    <div class="premium-glass-form-card">
+                        <div class="z-1">
+                            <span class="d-inline-block px-3 py-1 mb-3 rounded-pill text-uppercase" style="background: rgba(210,85,26,0.2); color: var(--dejuc-orange); letter-spacing: 2px; font-size: 0.75rem; font-weight: 700;">Démarrer</span>
+                            <h3 class="font-serif mb-2 text-white" style="font-size: 2rem; font-weight: 600;">Contactez-nous</h3>
+                            <p class="text-white-50 mb-5 lh-lg" style="font-size: 0.95rem;">Discutez avec nos experts du pôle <strong>{{ service.title }}</strong>.</p>
                             
                             <form action="{% url 'contact' %}" method="post" class="needs-validation">
                                 {% csrf_token %}
                                 <input type="hidden" name="service" value="{{ service.slug|slice:':10' }}">
                                 
-                                <div class="mb-4 modern-input-group position-relative">
+                                <div class="mb-4 glass-input-group position-relative">
                                     <label>Votre Nom Complet</label>
-                                    <i class="fas fa-user icon-wrapper"></i>
                                     <input type="text" name="first_name" class="form-control shadow-none" placeholder="Jean Dupont" required>
+                                    <i class="fas fa-user icon-wrapper"></i>
                                     <input type="hidden" name="last_name" value="-">
                                 </div>
                                 
-                                <div class="mb-4 modern-input-group position-relative">
+                                <div class="mb-4 glass-input-group position-relative">
                                     <label>Numéro de Téléphone</label>
-                                    <i class="fas fa-phone-alt icon-wrapper"></i>
                                     <input type="tel" name="phone" class="form-control shadow-none" placeholder="+225 00 00 00 00" required>
+                                    <i class="fas fa-phone-alt icon-wrapper"></i>
                                     <input type="hidden" name="email" value="contact@service.ci">
                                 </div>
                                 
-                                <div class="mb-4 modern-input-group position-relative">
+                                <div class="mb-4 glass-input-group position-relative">
                                     <label>Décrivez votre besoin</label>
                                     <textarea name="message" class="form-control shadow-none" rows="3" placeholder="Expliquez-nous brièvement..." required></textarea>
                                 </div>
                                 
-                                <div class="form-check mb-4 p-3 rounded" style="background: rgba(210,85,26,0.03); border: 1px solid rgba(210,85,26,0.1);">
-                                    <input class="form-check-input ms-1 mt-1" type="checkbox" name="gdpr_consent" value="True" id="serv-gdpr" required checked>
-                                    <label class="form-check-label text-muted small ms-2" for="serv-gdpr" style="line-height: 1.5;">
+                                <div class="form-check mb-4 p-3 rounded" style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05);">
+                                    <input class="form-check-input ms-1 mt-1 border-secondary bg-transparent" type="checkbox" name="gdpr_consent" value="True" id="serv-gdpr" required checked>
+                                    <label class="form-check-label text-white-50 small ms-2" for="serv-gdpr" style="line-height: 1.5;">
                                         J'accepte que mes informations soient traitées pour être recontacté(e).
                                     </label>
                                 </div>
                                 
-                                <button type="submit" class="btn btn-premium w-100 py-3 rounded-pill text-uppercase d-flex align-items-center justify-content-center px-4 mt-2 shadow-md position-relative overflow-hidden" style="letter-spacing: 2px; font-size: 0.8rem; font-weight: 700; transition: all 0.3s ease;">
+                                <button type="submit" class="btn btn-premium w-100 py-3 rounded-pill text-uppercase d-flex align-items-center justify-content-center px-4 mt-2 shadow-lg position-relative overflow-hidden" style="letter-spacing: 2px; font-size: 0.8rem; font-weight: 700; transition: all 0.3s ease; border: none;">
                                     <span>Envoyer ma demande</span>
                                     <i class="fas fa-arrow-right ms-2"></i>
                                 </button>
