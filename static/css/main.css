@@ -1621,3 +1621,48 @@ img {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 0.85rem;
 }
+
+/* FINAL OVERRIDE FOR SUPER COMPACT FOOTER */
+.site-footer {
+  padding-top: 40px !important;
+  padding-bottom: 10px !important;
+}
+.footer-logo-wrapper {
+  padding: 5px 10px !important;
+  margin-bottom: 15px !important;
+}
+.footer-logo {
+  height: 40px !important;
+}
+.footer-title {
+  margin-bottom: 15px !important;
+  font-size: 1rem !important;
+}
+.footer-contact-item {
+  margin-bottom: 10px !important;
+  align-items: flex-start !important;
+}
+.footer-contact-icon {
+  margin-top: 4px !important;
+  margin-right: 10px !important;
+  font-size: 1rem !important;
+}
+.footer-links li {
+  margin-bottom: 8px !important;
+}
+.footer-bottom {
+  margin-top: 30px !important;
+  padding-top: 15px !important;
+}
+.site-footer p {
+  font-size: 0.9rem !important;
+  line-height: 1.5 !important;
+  margin-bottom: 15px !important;
+}
+.site-footer .footer-social {
+  margin-top: 10px !important;
+}
+.site-footer .social-link {
+  width: 32px !important;
+  height: 32px !important;
+}
