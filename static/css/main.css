@@ -1872,3 +1872,13 @@ img {
 .blog-card-premium:hover .blog-link-premium {
   gap: 12px;
 }
+
+/* AWWWARDS MINIMAL FORM */
+.minimal-input-group { position: relative; margin-top: 1.5rem; margin-bottom: 2rem; }
+.minimal-input { width: 100%; background: transparent !important; border: none !important; padding: 10px 0 5px 0; color: #fff !important; font-size: 1rem; outline: none !important; box-shadow: none !important; }
+.minimal-line { position: absolute; bottom: 0; left: 0; width: 100%; height: 1px; background: rgba(255,255,255,0.15); }
+.minimal-line::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--dejuc-orange); transition: width 0.4s ease; }
+.minimal-input:focus ~ .minimal-line::after, .minimal-input:not(:placeholder-shown) ~ .minimal-line::after { width: 100%; }
+.minimal-label { position: absolute; top: 10px; left: 0; color: rgba(255,255,255,0.5); font-size: 0.95rem; pointer-events: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+.minimal-input:focus ~ .minimal-label, .minimal-input:not(:placeholder-shown) ~ .minimal-label { top: -16px; font-size: 0.7rem; color: var(--dejuc-orange); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
+.minimal-input:-webkit-autofill, .minimal-input:-webkit-autofill:hover, .minimal-input:-webkit-autofill:focus, .minimal-input:-webkit-autofill:active{ -webkit-box-shadow: 0 0 0 30px #060c11 inset !important; -webkit-text-fill-color: white !important; transition: background-color 5000s ease-in-out 0s; }
