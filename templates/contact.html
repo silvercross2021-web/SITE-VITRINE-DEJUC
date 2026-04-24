@@ -6,19 +6,7 @@
 <div class="page-header position-relative" style="background: linear-gradient(rgba(8, 17, 25, 0.8), rgba(8, 17, 25, 0.95)), url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat; padding: 180px 0 100px;">
     <div class="container text-center position-relative z-1">
         <span class="d-inline-block px-3 py-1 mb-3 rounded-pill text-uppercase" style="background: rgba(210,85,26,0.15); color: var(--dejuc-orange); letter-spacing: 2px; font-size: 0.8rem; font-weight: 700;" data-aos="fade-down">Parlons De Votre Projet</span>
-        <h1 class="display-3 font-serif mb-4 text-white" style="font-weight: 300;" data-aos="fade-up" data-aos-delay="100">Contactez <span class="fw-bold" style="color: var(--dejuc-orange);">Nous</span></h1>
-        
-        <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
-            <ol class="breadcrumb justify-content-center mb-0">
-                {% for name, url in breadcrumb %}
-                    {% if url %}
-                        <li class="breadcrumb-item"><a href="{{ url }}" class="text-white-50 text-decoration-none">{{ name }}</a></li>
-                    {% else %}
-                        <li class="breadcrumb-item active text-white" aria-current="page">{{ name }}</li>
-                    {% endif %}
-                {% endfor %}
-            </ol>
-        </nav>
+        <h1 class="display-3 font-serif mb-0 text-white" style="font-weight: 300;" data-aos="fade-up" data-aos-delay="100">Contactez <span class="fw-bold" style="color: var(--dejuc-orange);">Nous</span></h1>
     </div>
 </div>
 
@@ -76,10 +64,17 @@
                         background: #ffffff !important;
                         border: 1px solid rgba(27, 150, 200, 0.1) !important;
                         border-radius: 24px !important;
-                        padding: 50px !important;
+                        padding: 40px !important;
                         box-shadow: 0 40px 80px rgba(27, 150, 200, 0.08), 0 0 0 1px rgba(27, 150, 200, 0.05) !important;
                         position: relative !important;
                         overflow: hidden !important;
+                    }
+                    
+                    @media (max-width: 768px) {
+                        .premium-light-form-card {
+                            padding: 24px 18px !important;
+                            border-radius: 16px !important;
+                        }
                     }
                     .premium-light-form-card::before {
                         content: "";

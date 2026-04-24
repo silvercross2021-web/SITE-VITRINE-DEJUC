@@ -3,22 +3,10 @@
 
 {% block content %}
 <!-- Premium Page Header -->
-<div class="page-header position-relative" style="background: linear-gradient(rgba(8, 17, 25, 0.8), rgba(8, 17, 25, 0.95)), url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat; padding: 180px 0 100px;">
+<div class="page-header position-relative" style="background: linear-gradient(rgba(8, 17, 25, 0.8), rgba(8, 17, 25, 0.95)), url('{% static 'images/about_hero.png' %}') center/cover no-repeat; padding: 180px 0 100px;">
     <div class="container text-center position-relative z-1">
         <span class="d-inline-block px-3 py-1 mb-3 rounded-pill text-uppercase" style="background: rgba(210,85,26,0.15); color: var(--dejuc-orange); letter-spacing: 2px; font-size: 0.8rem; font-weight: 700;" data-aos="fade-down">Cabinet d'Expertise</span>
-        <h1 class="display-3 font-serif mb-4 text-white" style="font-weight: 300;" data-aos="fade-up" data-aos-delay="100">Notre <span class="fw-bold" style="color: var(--dejuc-orange);">Histoire</span></h1>
-        
-        <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
-            <ol class="breadcrumb justify-content-center mb-0">
-                {% for name, url in breadcrumb %}
-                    {% if url %}
-                        <li class="breadcrumb-item"><a href="{{ url }}" class="text-white-50 text-decoration-none">{{ name }}</a></li>
-                    {% else %}
-                        <li class="breadcrumb-item active text-white" aria-current="page">{{ name }}</li>
-                    {% endif %}
-                {% endfor %}
-            </ol>
-        </nav>
+        <h1 class="display-3 font-serif mb-0 text-white" style="font-weight: 300;" data-aos="fade-up" data-aos-delay="100">Notre <span class="fw-bold" style="color: var(--dejuc-orange);">Histoire</span></h1>
     </div>
 </div>
 
@@ -123,22 +111,22 @@
                 <div class="position-relative">
                     <div class="img-premium-wrapper">
                         <!-- Placeholder pour la photo de M. Gnabro -->
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1000&q=80" alt="M. Dakouri Gnabro" class="img-fluid w-100">
+                        <img src="{% static 'images/founder.png' %}" alt="M. Dakouri Gnabro" class="img-fluid w-100">
                     </div>
                     
-                    <!-- Floating Glass Badge -->
-                    <div class="position-absolute bottom-0 start-0 glass-badge p-3 p-md-4 rounded m-0 m-md-n3 ms-0 ms-md-n4 shadow-lg d-flex align-items-center w-100 w-md-auto" style="transform: translateY(20px); max-width: 90%; left: 5% !important;">
-                        <div class="bg-dark rounded-circle d-flex align-items-center justify-content-center me-3 flex-shrink-0" style="width: 50px; height: 50px;">
+                    <!-- Floating Glass Badge - Mobile safe -->
+                    <div class="mt-3 p-3 rounded-3 border d-flex align-items-center" style="background: rgba(255,255,255,0.95); box-shadow: 0 8px 25px rgba(0,0,0,0.08);">
+                        <div class="bg-dark rounded-circle d-flex align-items-center justify-content-center me-3 flex-shrink-0" style="width: 46px; height: 46px;">
                             <i class="fas fa-balance-scale fs-5 text-white"></i>
                         </div>
                         <div>
-                            <h6 class="font-heading mb-1 fw-bold text-dark text-uppercase" style="letter-spacing: 1px;">Arbitre Agréé</h6>
+                            <h6 class="font-heading mb-0 fw-bold text-dark text-uppercase" style="letter-spacing: 1px; font-size: 0.85rem;">Arbitre Agréé</h6>
                             <span class="small text-muted fw-semibold">Expertise Reconnue</span>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-lg-6 offset-lg-1 order-lg-1" data-aos="fade-right" data-aos-delay="200">
                 <span class="section-subtitle">Le Fondateur</span>
                 <h2 class="section-title mb-3 font-serif" style="font-size: 2.8rem;">M. Dakouri Gnabro</h2>

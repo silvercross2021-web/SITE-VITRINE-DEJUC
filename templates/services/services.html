@@ -3,22 +3,10 @@
 
 {% block content %}
 <!-- Premium Page Header -->
-<div class="page-header position-relative" style="background: linear-gradient(rgba(8, 17, 25, 0.8), rgba(8, 17, 25, 0.95)), url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat; padding: 180px 0 100px;">
+<div class="page-header position-relative" style="background: linear-gradient(rgba(8, 17, 25, 0.8), rgba(8, 17, 25, 0.95)), url('{% static 'images/services_hero.png' %}') center/cover no-repeat; padding: 180px 0 100px;">
     <div class="container text-center position-relative z-1">
         <span class="d-inline-block px-3 py-1 mb-3 rounded-pill text-uppercase" style="background: rgba(210,85,26,0.15); color: var(--dejuc-orange); letter-spacing: 2px; font-size: 0.8rem; font-weight: 700;" data-aos="fade-down">Compétences Globales</span>
-        <h1 class="display-3 font-serif mb-4 text-white" style="font-weight: 300;" data-aos="fade-up" data-aos-delay="100">Nos <span class="fw-bold" style="color: var(--dejuc-orange);">Pôles d'Expertise</span></h1>
-        
-        <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
-            <ol class="breadcrumb justify-content-center mb-0">
-                {% for name, url in breadcrumb %}
-                    {% if url %}
-                        <li class="breadcrumb-item"><a href="{{ url }}" class="text-white-50 text-decoration-none">{{ name }}</a></li>
-                    {% else %}
-                        <li class="breadcrumb-item active text-white" aria-current="page">{{ name }}</li>
-                    {% endif %}
-                {% endfor %}
-            </ol>
-        </nav>
+        <h1 class="display-3 font-serif mb-0 text-white" style="font-weight: 300;" data-aos="fade-up" data-aos-delay="100">Nos <span class="fw-bold" style="color: var(--dejuc-orange);">Pôles d'Expertise</span></h1>
     </div>
 </div>
 
@@ -53,7 +41,7 @@
                         
                         <ul class="list-unstyled mb-4 text-muted small" style="line-height: 1.8;">
                             {% for feature in service.features|slice:":3" %}
-                                <li class="mb-2"><i class="fas fa-check text-dejuc-orange me-2"></i> {{ feature }}</li>
+                                <li class="mb-2"><i class="fas fa-check {% if service.color == 'orange' %}text-dejuc-orange{% elif service.color == 'teal' %}text-dejuc-teal{% else %}text-dejuc-blue{% endif %} me-2"></i> {{ feature }}</li>
                             {% endfor %}
                         </ul>
                         

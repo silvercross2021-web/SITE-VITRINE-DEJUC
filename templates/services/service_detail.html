@@ -16,19 +16,7 @@
             {% elif service.icon == 'graduation-cap' %}<i class="fas fa-graduation-cap"></i>
             {% else %}<i class="fas fa-check-circle"></i>{% endif %}
         </div>
-        <h1 class="display-3 font-serif mb-4 text-white" style="font-weight: 300;" data-aos="fade-up" data-aos-delay="100">{{ service.title }}</h1>
-        
-        <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
-            <ol class="breadcrumb justify-content-center mb-0">
-                {% for name, url in breadcrumb %}
-                    {% if url %}
-                        <li class="breadcrumb-item"><a href="{{ url }}" class="text-white-50 text-decoration-none">{{ name }}</a></li>
-                    {% else %}
-                        <li class="breadcrumb-item active text-white" aria-current="page">{{ name }}</li>
-                    {% endif %}
-                {% endfor %}
-            </ol>
-        </nav>
+        <h1 class="display-3 font-serif mb-0 text-white" style="font-weight: 300;" data-aos="fade-up" data-aos-delay="100">{{ service.title }}</h1>
     </div>
 </div>
 

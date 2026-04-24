@@ -4,16 +4,27 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     
-    // 1. Remove Preloader
+    // 1. Remove Preloader - fast dismiss + failsafe on window.load
     const preloader = document.getElementById('preloader');
-    if (preloader) {
-        setTimeout(() => {
+    
+    function hidePreloader() {
+        if (preloader && preloader.style.opacity !== '0') {
             preloader.style.opacity = '0';
+            preloader.style.visibility = 'hidden';
+            preloader.style.pointerEvents = 'none';
             setTimeout(() => {
                 preloader.style.display = 'none';
-            }, 500);
-        }, 800);
+            }, 450);
+        }
     }
+    
+    // Hide after 300ms on DOMContentLoaded
+    setTimeout(hidePreloader, 300);
+    
+    // Failsafe: hide on window.load (all resources loaded) at the latest
+    window.addEventListener('load', () => {
+        setTimeout(hidePreloader, 100);
+    });
 
     // 2. Initialize AOS (Animate On Scroll)
     if (typeof AOS !== 'undefined') {
